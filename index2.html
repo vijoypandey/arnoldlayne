@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Arnold Layne | Emergent Multi-agent Systems</title>
+    <title>Arnold Layne | Emergent Behaviors in Multi-agent-human Societies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         :root {
@@ -165,6 +165,153 @@
             .manifesto-grid { grid-template-columns: 1fr; }
             .glitch-title { font-size: 3rem; }
         }
+        .container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 80px 24px;
+}
+
+h1,h2,h3 {
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 60px;
+  font-size: 1.8rem;
+}
+
+p {
+  color: #cfcfcf;
+}
+
+a {
+  color: #9cc4ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------- */
+/* Hero */
+/* -------------------- */
+
+.hero {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  color: #a9a9a9;
+}
+
+.hero-image {
+  margin-top: 50px;
+  height: 380px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  background:
+    linear-gradient(120deg,
+      rgba(255,0,120,.15),
+      rgba(120,80,255,.12),
+      rgba(80,160,255,.15)
+    );
+  backdrop-filter: blur(4px);
+}
+
+/* -------------------- */
+/* Cards */
+/* -------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,.04);
+  border-radius: 10px;
+  padding: 24px;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.06);
+}
+
+/* -------------------- */
+/* Timeline */
+/* -------------------- */
+
+.timeline {
+  margin-top: 40px;
+  border-left: 2px solid rgba(255,255,255,.15);
+  padding-left: 25px;
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+}
+
+.timeline-year {
+  color: #8ab4ff;
+  font-weight: 600;
+}
+
+/* -------------------- */
+/* Quote */
+/* -------------------- */
+
+blockquote {
+  margin: 40px 0;
+  padding: 20px;
+  background: rgba(255,255,255,.05);
+  border-left: 4px solid #8ab4ff;
+  border-radius: 6px;
+}
+
+/* -------------------- */
+/* Footer */
+/* -------------------- */
+
+footer {
+  margin-top: 100px;
+  font-size: .9rem;
+  color: #888;
+  text-align: center;
+}
+
+/* -------------------- */
+/* Subtle animation */
+/* -------------------- */
+
+.fadein {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade 1s forwards;
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
     </style>
 </head>
 <body>
