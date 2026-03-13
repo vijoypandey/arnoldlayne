@@ -312,6 +312,76 @@ footer {
   }
 }
 
+        .telemetry-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 40px 0 80px 0;
+        font-family: 'Courier New', monospace;
+    }
+
+    .telemetry-card {
+        background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.2));
+        border: 1px dashed var(--border);
+        padding: 20px;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    .telemetry-card::after {
+        content: "LIVE_DATA";
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        background: var(--bg-dark);
+        padding: 0 5px;
+        font-size: 0.6rem;
+        color: var(--psy-purple);
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+        color: #888;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--neon-blue);
+    }
+
+    .stat-bar-bg {
+        width: 100%;
+        height: 4px;
+        background: rgba(255,255,255,0.1);
+        margin-top: 10px;
+        border-radius: 2px;
+    }
+
+    .stat-bar-fill {
+        height: 100%;
+        background: var(--psy-purple);
+        box-shadow: 0 0 10px var(--psy-purple);
+    }
+
+    /* Animation for the "live" feel */
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    .live-dot {
+        height: 8px;
+        width: 8px;
+        background-color: #ff4b2b;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px;
+        animation: pulse 1.5s infinite;
+    }
     </style>
 </head>
 <body>
@@ -360,6 +430,40 @@ footer {
             </div>
         </section>
 
+        <section>
+    <div style="margin-bottom: 20px;">
+        <span class="live-dot"></span>
+        <span style="font-family: monospace; font-size: 0.8rem; color: #888;">REAL-TIME SYSTEM METRICS</span>
+    </div>
+    <div class="telemetry-container">
+        <div class="telemetry-card">
+            <span class="stat-label">Semantic Drift Index</span>
+            <span class="stat-value">0.042</span>
+            <div class="stat-bar-bg">
+                <div class="stat-bar-fill" style="width: 14%;"></div>
+            </div>
+            <p style="font-size: 0.6rem; margin-top: 10px; color: #555;">Alignment variance across multi-agent nodes.</p>
+        </div>
+
+        <div class="telemetry-card">
+            <span class="stat-label">Cooperation Index (H-A)</span>
+            <span class="stat-value">88%</span>
+            <div class="stat-bar-bg">
+                <div class="stat-bar-fill" style="width: 88%;"></div>
+            </div>
+            <p style="font-size: 0.6rem; margin-top: 10px; color: #555;">Human-Agent collaborative success rate.</p>
+        </div>
+
+        <div class="telemetry-card">
+            <span class="stat-label">Nash Equilibrium Prob.</span>
+            <span class="stat-value">0.72</span>
+            <div class="stat-bar-bg">
+                <div class="stat-bar-fill" style="width: 72%;"></div>
+            </div>
+            <p style="font-size: 0.6rem; margin-top: 10px; color: #555;">Current stability of strategic interactions.</p>
+        </div>
+    </div>
+    </section>
         <section class="lore-section">
             <div style="max-width: 800px; opacity: 0.6;">
                 <h2>Why "Arnold Layne"?</h2>
