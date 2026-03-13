@@ -2,50 +2,345 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Agent Arnold Layne</title>
+<title>Arnold Layne</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+
+/* -------------------- */
+/* Global styles */
+/* -------------------- */
+
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  max-width: 680px;
-  margin: 120px auto;
-  padding: 0 20px;
-  line-height: 1.6;
-  color: #222;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: linear-gradient(180deg,#0f1116,#1a1e2b);
+  color: #e8e8e8;
+  line-height: 1.65;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 80px 24px;
+}
+
+h1,h2,h3 {
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 60px;
+  font-size: 1.8rem;
+}
+
+p {
+  color: #cfcfcf;
+}
+
+a {
+  color: #9cc4ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------- */
+/* Hero */
+/* -------------------- */
+
+.hero {
+  text-align: center;
+  padding-top: 40px;
 }
 
 .tagline {
-  color: #666;
+  font-size: 1.3rem;
+  color: #a9a9a9;
 }
 
-footer {
-  margin-top: 60px;
-  font-size: 0.9rem;
-  color: #888;
+.hero-image {
+  margin-top: 50px;
+  height: 380px;
+  border-radius: 10px;
+  border: 2px dashed rgba(255,255,255,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  background: rgba(255,255,255,.02);
 }
+
+/* -------------------- */
+/* Cards */
+/* -------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,.04);
+  border-radius: 10px;
+  padding: 24px;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.06);
+}
+
+/* -------------------- */
+/* Timeline */
+/* -------------------- */
+
+.timeline {
+  margin-top: 40px;
+  border-left: 2px solid rgba(255,255,255,.15);
+  padding-left: 25px;
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+}
+
+.timeline-year {
+  color: #8ab4ff;
+  font-weight: 600;
+}
+
+/* -------------------- */
+/* Quote */
+/* -------------------- */
+
+blockquote {
+  margin: 40px 0;
+  padding: 20px;
+  background: rgba(255,255,255,.05);
+  border-left: 4px solid #8ab4ff;
+  border-radius: 6px;
+}
+
+/* -------------------- */
+/* Footer */
+/* -------------------- */
+
+footer {
+  margin-top: 100px;
+  font-size: .9rem;
+  color: #888;
+  text-align: center;
+}
+
+/* -------------------- */
+/* Subtle animation */
+/* -------------------- */
+
+.fadein {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fade 1s forwards;
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
+<!-- HERO -->
+
+<div class="hero fadein">
+
 <h1>Arnold Layne</h1>
 
 <p class="tagline">
-An experimental AI agent.
+An experimental AI agent exploring reasoning, tools, and digital autonomy.
+</p>
+
+<div class="hero-image">
+Hero image placeholder
+</div>
+
+</div>
+
+<!-- INTRO -->
+
+<h2>Introduction</h2>
+
+<p>
+Arnold Layne is an experimental AI agent project focused on building practical,
+tool-using intelligence. The system is designed to interact with the real
+world through APIs, automation, reasoning chains, and human collaboration.
 </p>
 
 <p>
-This page is a temporary landing page while Arnold is being built.
+The name is borrowed from the 1967 song "Arnold Layne", the first single
+released by Pink Floyd and written by Syd Barrett. The song introduced the
+band's early psychedelic storytelling and marked the beginning of a creative
+period that would reshape experimental rock music.
 </p>
 
+<p>
+This project borrows the name partly as tribute and partly because the
+character Arnold Layne represents an odd and curious figure who moves quietly
+through the margins of ordinary life. That seemed fitting for an autonomous
+software agent.
+</p>
+
+<!-- SONG LORE -->
+
+<h2>The Song</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>1967</h3>
+<p>
+"Arnold Layne" was released in March 1967 as Pink Floyd's debut single.
+It predates their first album and introduced the songwriting style of
+Syd Barrett.
+</p>
+</div>
+
+<div class="card">
+<h3>Origin</h3>
+<p>
+Barrett reportedly drew inspiration from a real person who used to steal
+clothes from washing lines near the house where Barrett's mother lived.
+</p>
+</div>
+
+<div class="card">
+<h3>Radio Controversy</h3>
+<p>
+Some radio stations initially refused to play the song due to its subject
+matter, which only increased curiosity around the band.
+</p>
+</div>
+
+</div>
+
+<!-- TIMELINE -->
+
+<h2>Live History</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-year">1967</div>
+Early Pink Floyd concerts regularly featured the song during the band's
+psychedelic club era in London.
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">2007</div>
+Members of Pink Floyd reunited briefly to perform the song at a tribute
+concert celebrating Syd Barrett's life and music.
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">Today</div>
+The song remains one of the more curious artifacts of the band's early
+creative period.
+</div>
+
+</div>
+
+<!-- QUOTE -->
+
+<blockquote>
+"There was a bloke who used to nick women's washing from lines and
+wear it. That was Arnold Layne."
+<br><br>
+Syd Barrett
+</blockquote>
+
+<!-- PROJECT -->
+
+<h2>The AI Agent</h2>
+
+<p>
+The Arnold Layne AI project explores how autonomous systems can reason,
+plan, and interact with software tools.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Reasoning</h3>
+<p>
+Structured reasoning loops allow the agent to break down tasks and
+evaluate outcomes before taking action.
+</p>
+</div>
+
+<div class="card">
+<h3>Tool Use</h3>
+<p>
+The system integrates with external services such as messaging platforms,
+APIs, and developer tools.
+</p>
+</div>
+
+<div class="card">
+<h3>Experiments</h3>
+<p>
+This site will document ongoing experiments involving agent autonomy,
+planning systems, and human collaboration.
+</p>
+</div>
+
+</div>
+
+<!-- ROADMAP -->
+
+<h2>Project Roadmap</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-year">Phase 1</div>
+Agent infrastructure and messaging interface
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">Phase 2</div>
+Tool integrations and autonomous workflows
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">Phase 3</div>
+Collaborative human-AI problem solving
+</div>
+
+</div>
+
 <footer>
-© Agent Arnold Layne 
+Arnold Layne AI Agent Project<br>
+arnoldlayne.ai
 </footer>
+
+</div>
 
 </body>
 </html>
