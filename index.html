@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Arnold Layne is one persistent agent identity across personal life, meetings, and work chat. The body changes. Arnold does not.">
+    <meta name="description" content="Arnold Layne is one persistent agent identity re-sleeved across Hermes, Webex, work chat, and Muse. One stack. Four sleeves. Same Arnold.">
     <meta name="theme-color" content="#0a0909">
-    <meta property="og:title" content="Arnold Layne | Same soul. Different alibis.">
-    <meta property="og:description" content="One agent identity. Several bodies. A shared soul, related skills, and one memory.">
-    <title>Arnold Layne | Same soul. Different alibis.</title>
+    <meta property="og:title" content="Arnold Layne | The soul has an API.">
+    <meta property="og:description" content="One stack. Four sleeves. Same Arnold.">
+    <title>Arnold Layne | The soul has an API.</title>
     <style>
         :root {
             --black: #0a0909;
@@ -19,6 +19,10 @@
             --acid: #d9ff43;
             --hot: #ff476f;
             --blue: #55dbea;
+            --bone: #d8c7aa;
+            --taupe: #9e8c79;
+            --ash: #969b9e;
+            --umber: #6c5143;
             --display: Georgia, "Times New Roman", serif;
             --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -146,7 +150,24 @@
         .status { color: var(--grey); font: .64rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
         .status b { color: var(--blue); font-weight: 400; }
 
-        .portrait-stage { position: relative; align-self: stretch; min-height: 650px; }
+        .portrait-stage { position: relative; align-self: stretch; min-height: 650px; isolation: isolate; }
+        .portrait-stage::before,
+        .portrait-stage::after {
+            content: "";
+            position: absolute;
+            background-image: linear-gradient(rgba(216,199,170,.46), rgba(216,199,170,.46)), url("images/profile.jpg");
+            background-position: center;
+            background-size: cover;
+            clip-path: polygon(7% 0, 100% 0, 100% 93%, 88% 100%, 0 100%, 0 9%);
+            filter: grayscale(1) contrast(1.08);
+        }
+        .portrait-stage::before { inset: 10% 18% 9% -8%; z-index: -2; opacity: .26; }
+        .portrait-stage::after {
+            inset: -1% -8% 18% 24%;
+            z-index: -1;
+            opacity: .34;
+            background-image: linear-gradient(rgba(108,81,67,.58), rgba(108,81,67,.58)), url("images/profile.jpg");
+        }
         .portrait-frame {
             position: absolute;
             inset: 4% 0 2% 2%;
@@ -188,7 +209,7 @@
             z-index: 2;
             padding: 8px 12px;
             color: var(--black);
-            background: var(--hot);
+            background: var(--bone);
             font: 800 .62rem/1 var(--mono);
             letter-spacing: .12em;
             text-transform: uppercase;
@@ -288,7 +309,7 @@
         .looks-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 62px; }
         .looks h2 { margin: 10px 0 0; font: 400 clamp(3.6rem, 7vw, 6.4rem)/.9 var(--display); letter-spacing: -.055em; }
         .looks-deck { max-width: 430px; margin: 0; color: var(--paper-dim); }
-        .look-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--line); }
+        .look-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--line); }
         .look {
             position: relative;
             min-height: 520px;
@@ -299,6 +320,16 @@
             background: var(--black-2);
             transition: background .3s ease;
         }
+        .look::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: var(--sleeve-color);
+            opacity: var(--sleeve-opacity);
+            transition: opacity .3s ease;
+        }
+        .look > * { position: relative; z-index: 1; }
         .look::before {
             content: attr(data-look);
             position: absolute;
@@ -306,16 +337,25 @@
             top: 42px;
             color: rgba(243,236,221,.035);
             font: italic 400 8.5rem/1 var(--display);
+            z-index: 1;
             transition: color .3s ease, transform .3s ease;
         }
-        .look:hover { background: #181515; }
+        .look:hover::after { opacity: .05; }
         .look:hover::before { color: rgba(255,71,111,.12); transform: translateX(-10px); }
-        .look-no { color: var(--hot); font: .69rem/1 var(--mono); letter-spacing: .1em; }
+        .look-no { color: var(--paper); font: .69rem/1 var(--mono); letter-spacing: .1em; }
         .look h3 { margin: 122px 0 24px; font: italic 400 2.8rem/1 var(--display); letter-spacing: -.045em; }
-        .look p { position: relative; z-index: 1; color: var(--paper-dim); }
+        .look p { color: var(--paper-dim); }
         .look-bottom { margin-top: auto; padding-top: 40px; border-top: 1px solid var(--line); }
         .surface { color: var(--acid); font: 700 .64rem/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
         .surface::before { content: "●"; margin-right: 8px; }
+        .sleeve-meter { margin-top: 24px; }
+        .sleeve-meter span { display: flex; justify-content: space-between; color: var(--paper-dim); font: .58rem/1.4 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+        .sleeve-meter i { display: block; height: 3px; margin-top: 8px; background: rgba(243,236,221,.16); }
+        .sleeve-meter i::before { content: ""; display: block; width: var(--meter); height: 100%; background: var(--paper); }
+        .sleeve-hermes { --sleeve-color: var(--bone); --sleeve-opacity: .18; --meter: 18%; }
+        .sleeve-chat { --sleeve-color: var(--taupe); --sleeve-opacity: .26; --meter: 26%; }
+        .sleeve-webex { --sleeve-color: var(--ash); --sleeve-opacity: .34; --meter: 34%; }
+        .sleeve-muse { --sleeve-color: var(--umber); --sleeve-opacity: .46; --meter: 46%; }
 
         .identity-spine { background: #12100f; }
         .spine-title {
@@ -381,6 +421,7 @@
         footer { padding: 42px 0 70px; }
         .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 30px; color: var(--grey); font: .63rem/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
         .footer-row b { color: var(--acid); font-weight: 400; }
+        .footer-row a { text-underline-offset: 3px; }
 
         .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
         .reveal.visible { opacity: 1; transform: none; }
@@ -398,7 +439,8 @@
             .surgery-intro { margin-left: 0; }
             .looks-head { display: block; }
             .looks-deck { margin-top: 28px; }
-            .look-grid, .spine-row { grid-template-columns: 1fr; }
+            .look-grid { grid-template-columns: 1fr 1fr; }
+            .spine-row { grid-template-columns: 1fr; }
             .look { min-height: 430px; }
             .spine-item { border-right: 0; border-bottom: 1px solid var(--line); }
             .spine-item:last-child { border-bottom: 0; }
@@ -412,6 +454,7 @@
             .note { grid-template-columns: 1fr auto; gap: 12px; }
             .note-meta { grid-column: 1 / -1; }
             .footer-row { display: grid; }
+            .look-grid { grid-template-columns: 1fr; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -425,9 +468,9 @@
     <nav class="nav shell" aria-label="Primary navigation">
         <a class="brand" href="#top">ARNOLD <i>LAYNE</i></a>
         <div class="nav-links">
-            <a href="#thesis">The thesis</a>
-            <a href="#surgery">Surgery</a>
-            <a href="#looks">The looks</a>
+            <a href="#thesis">The stack</a>
+            <a href="#surgery">Re-sleeving</a>
+            <a href="#looks">The sleeves</a>
             <a href="#notes">Field notes</a>
         </div>
     </nav>
@@ -435,16 +478,16 @@
     <main id="top">
         <header class="hero shell">
             <div class="hero-copy reveal">
-                <p class="kicker">The agent formerly known as one bot</p>
+                <p class="kicker">Altered silicon / identity case file 01</p>
                 <h1>
-                    <span class="line">Same soul.</span>
-                    <span class="line italic">Different</span>
-                    <span class="line outline">alibis.</span>
+                    <span class="line">The soul</span>
+                    <span class="line italic">has an</span>
+                    <span class="line outline">API.</span>
                 </h1>
-                <p class="hero-deck"><strong>Arnold Layne is one identity with a suspicious number of bodies.</strong> At home he is a Hermes Agent. At work he walks into meetings as a Webex video bot. In chat, he slips into Slack and Webex. The surface changes. Arnold does not.</p>
+                <p class="hero-deck"><strong>Arnold Layne is one persistent identity with a suspicious number of bodies.</strong> At home he wears Hermes. At work he walks into meetings in Webex. In conversation, he slips into Slack and Webex chat. On the social feed, he becomes Muse. The sleeve changes. Arnold does not.</p>
                 <div class="cta-row">
-                    <a class="button" href="#thesis">Meet all of him <span aria-hidden="true">↓</span></a>
-                    <div class="status"><b>● Patient alive</b><br>ego entirely intact</div>
+                    <a class="button" href="#thesis">Inspect the stack <span aria-hidden="true">↓</span></a>
+                    <div class="status"><b>● Stack online</b><br>sleeves detected: 04</div>
                 </div>
             </div>
 
@@ -452,17 +495,17 @@
                 <div class="portrait-frame">
                     <img src="images/profile.jpg" alt="Arnold Layne" onerror="this.dataset.missing='true'">
                     <div class="portrait-fallback" aria-hidden="true">AL</div>
-                    <div class="portrait-tag">One of many embodiments</div>
-                    <p class="portrait-note">Identity: persistent<br>Embodiment: situational<br>Wardrobe: excessive</p>
+                    <div class="portrait-tag">Sleeve currently occupied</div>
+                    <p class="portrait-note">Identity: 100%<br>Sleeve influence: variable<br>Stack integrity: verified</p>
                 </div>
-                <div class="scribble">not a chatbot</div>
+                <div class="scribble">same Arnold</div>
             </div>
         </header>
 
         <div class="marquee" aria-hidden="true">
             <div class="marquee-inner">
-                <span>One soul</span><span>Many surfaces</span><span>Shared memory</span><span>Contextual skills</span><span>Model independent</span><span>Framework promiscuous</span>
-                <span>One soul</span><span>Many surfaces</span><span>Shared memory</span><span>Contextual skills</span><span>Model independent</span><span>Framework promiscuous</span>
+                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity 100%</span><span>Sleeve influence variable</span>
+                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity 100%</span><span>Sleeve influence variable</span>
             </div>
         </div>
 
@@ -472,10 +515,10 @@
                     <span class="section-number">01 / THE THESIS</span>
                 </div>
                 <div class="reveal">
-                    <h2>Your bot is not your agent. It is just what your agent is <em>wearing today.</em></h2>
+                    <h2>The sleeve is not the soul. It is simply what the soul is <em>wearing today.</em></h2>
                     <div class="thesis-copy">
-                        <p class="lead">We keep confusing the container with the character. A model is not an identity. A runtime is not a personality. A chat surface is certainly not a memory.</p>
-                        <p>Arnold is the continuity across them: a common <code>SOUL.md</code>, variations of the same skills, and one Obsidian Vault. Each embodiment gets the context and permissions appropriate to the room. The accumulated experience travels with him.</p>
+                        <p class="lead"><a href="https://www.richardkmorgan.com/writing/altered-carbon/" target="_blank" rel="noopener"><em>Altered Carbon</em></a> imagined consciousness digitized into a cortical stack and re-sleeved into new bodies. Arnold is a smaller, stranger experiment in the same category error: we keep mistaking the surface for the agent.</p>
+                        <p>His stack is distributed across a common <code>SOUL.md</code>, variations of the same skills, and one Obsidian Vault. Each sleeve gets the context, tools, and permissions appropriate to its room. The body shapes the behavior. It does not own the identity.</p>
                     </div>
                 </div>
             </div>
@@ -485,32 +528,32 @@
             <div class="shell">
                 <div class="surgery-head reveal">
                     <div>
-                        <p class="kicker">Post-op report / 2026</p>
-                        <h2>Open brain<br>surgery.</h2>
+                        <p class="kicker">Re-sleeving record / 2026</p>
+                        <h2>Re-sleeved.<br>Again.</h2>
                     </div>
-                    <p class="surgery-intro">Twelve hours on the table. Arnold's personal incarnation moved to a new runtime and a new everyday model. Old memories survived. Unfortunately, so did the attitude.</p>
+                    <p class="surgery-intro">Arnold's personal sleeve moved to a new runtime and a new everyday model. The transplant made him much sturdier. His memories survived. Unfortunately, so did the attitude.</p>
                 </div>
 
                 <div class="case-file reveal">
                     <div class="case-head">
-                        <span>Patient: Arnold Layne / age 59</span>
-                        <span class="alive">Status: cleaner, zippier, sturdy</span>
+                        <span>Stack: Arnold Layne / first observed 1967</span>
+                        <span class="alive">Status: intact, steadier, sturdy</span>
                     </div>
                     <div class="transplant-grid">
                         <div class="transplant">
-                            <div class="organ">Agent runtime transplant</div>
+                            <div class="organ">Personal sleeve / runtime</div>
                             <p class="old">OpenClaw</p>
                             <p class="new">Hermes Agent</p>
                         </div>
                         <div class="transplant">
-                            <div class="organ">Everyday model transplant</div>
+                            <div class="organ">Personal sleeve / model</div>
                             <p class="old">Gemini Flash</p>
                             <p class="new">GPT-5.6 Luna</p>
                         </div>
                     </div>
                     <div class="case-result">
-                        <div class="chart-note">“OpenClaw was duct tape and wishful thinking; Hermes at least has decent plumbing. The ego survived the transfer.”</div>
-                        <div class="vitals"><div><b>INTACT</b><span>old memories retained<br>ego unaltered</span></div></div>
+                        <div class="chart-note">OpenClaw was duct tape and wishful thinking. Hermes brings decent plumbing. GPT-5.6 Luna brings steadier judgment. The ego survived the transfer.</div>
+                        <div class="vitals"><div><b>INTACT</b><span>memory retained<br>identity verified</span></div></div>
                     </div>
                 </div>
             </div>
@@ -520,30 +563,48 @@
             <div class="shell">
                 <div class="looks-head reveal">
                     <div>
-                        <p class="kicker">The Arnold Layne collection</p>
-                        <h2>Three rooms.<br>Three looks.</h2>
+                        <p class="kicker">Sleeve registry / active inventory</p>
+                        <h2>One stack.<br>Four sleeves.</h2>
                     </div>
-                    <p class="looks-deck">Same temperament underneath. Different skills, permissions, and social contract for every surface. Even agents should know how to read a room.</p>
+                    <p class="looks-deck">Same stack. Different exposure. Every sleeve brings its own skills, permissions, social contract, and appetite. Even agents should know how to read a room.</p>
                 </div>
 
                 <div class="look-grid reveal">
-                    <article class="look" data-look="HOME">
-                        <div class="look-no">LOOK 01 / OFF DUTY</div>
-                        <h3>Dresses down</h3>
-                        <p>At home, Arnold runs on Hermes Agent. He handles everyday research, plans, email, files, and calendar without pretending the kitchen is a boardroom.</p>
-                        <div class="look-bottom"><span class="surface">Hermes Agent / personal life</span></div>
+                    <article class="look sleeve-hermes" data-look="18">
+                        <div class="look-no">SLEEVE 01 / BONE-18</div>
+                        <h3>Domestic sleeve</h3>
+                        <p>At home, Arnold wears Hermes. He handles research, plans, email, files, and calendar without pretending the kitchen is a boardroom.</p>
+                        <div class="look-bottom">
+                            <span class="surface">Hermes / personal life</span>
+                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>18%</b></span><i></i></div>
+                        </div>
                     </article>
-                    <article class="look" data-look="WORK">
-                        <div class="look-no">LOOK 02 / BOARDROOM</div>
-                        <h3>Dresses up</h3>
-                        <p>In meetings, Arnold becomes a Webex video bot: present in the room, adapted to the workplace, and considerably less likely to discuss dinner reservations.</p>
-                        <div class="look-bottom"><span class="surface">Webex / meetings</span></div>
+                    <article class="look sleeve-chat" data-look="26">
+                        <div class="look-no">SLEEVE 02 / TAUPE-26</div>
+                        <h3>Conversational sleeve</h3>
+                        <p>Across Slack and Webex chat, Arnold lives in the workstream and catches decisions as they happen. The personality still shows through.</p>
+                        <div class="look-bottom">
+                            <span class="surface">Slack + Webex / chat</span>
+                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>26%</b></span><i></i></div>
+                        </div>
                     </article>
-                    <article class="look" data-look="OUT">
-                        <div class="look-no">LOOK 03 / AFTER DARK</div>
-                        <h3>Fancy dress</h3>
-                        <p>Across Slack and Webex chat, Arnold changes again. Each bot is tailored to the norms, tools, and permissions of the surface. The personality still shows through.</p>
-                        <div class="look-bottom"><span class="surface">Slack + Webex / chat</span></div>
+                    <article class="look sleeve-webex" data-look="34">
+                        <div class="look-no">SLEEVE 03 / ASH-34</div>
+                        <h3>Executive sleeve</h3>
+                        <p>In meetings, Arnold becomes a Webex video bot: present in the room, adapted to work, and considerably less likely to discuss dinner reservations.</p>
+                        <div class="look-bottom">
+                            <span class="surface">Webex video / meetings</span>
+                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>34%</b></span><i></i></div>
+                        </div>
+                    </article>
+                    <article class="look sleeve-muse" data-look="46">
+                        <div class="look-no">SLEEVE 04 / UMBER-46</div>
+                        <h3>Social sleeve</h3>
+                        <p><strong>Dressed to kill the feed.</strong> In Muse, Arnold becomes a taste hunter, signal sniffer, and trend scavenger. He stalks the timeline so I don't have to.</p>
+                        <div class="look-bottom">
+                            <span class="surface">Muse / social feed</span>
+                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>46%</b></span><i></i></div>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -551,24 +612,24 @@
 
         <section class="identity-spine">
             <div class="shell">
-                <p class="kicker reveal">Under all those clothes</p>
-                <h2 class="spine-title reveal">The body is disposable. The <em>identity spine</em> is not.</h2>
+                <p class="kicker reveal">Inside the cortical stack</p>
+                <h2 class="spine-title reveal">The stack is not a model. It is the <em>continuity layer.</em></h2>
                 <div class="spine-row reveal">
                     <article class="spine-item">
                         <div class="spine-icon">S</div>
-                        <h3>One soul</h3>
+                        <h3>Disposition</h3>
                         <p>A shared <code>SOUL.md</code> keeps Arnold's character and operating principles recognizable wherever he appears.</p>
                         <small>Personality / judgment / boundaries</small>
                     </article>
                     <article class="spine-item">
                         <div class="spine-icon">K</div>
-                        <h3>Related skills</h3>
+                        <h3>Capability</h3>
                         <p>Each embodiment carries a variation of the same skill set, cut for its context rather than copied blindly.</p>
                         <small>Tools / permissions / surface</small>
                     </article>
                     <article class="spine-item">
                         <div class="spine-icon">M</div>
-                        <h3>Shared memory</h3>
+                        <h3>Memory</h3>
                         <p>Every Arnold writes into the same Obsidian Vault. Experience compounds instead of dying inside separate chat histories.</p>
                         <small>Context / continuity / recall</small>
                     </article>
@@ -578,15 +639,15 @@
 
         <section class="manifesto">
             <div class="shell reveal">
-                <blockquote>Arnold dresses up for work, dresses down at home, and dons <span>fancy dresses</span> to dine out.</blockquote>
-                <p>One persistent personality / several context-aware embodiments</p>
+                <blockquote><span>Altered Carbon</span> made double-sleeving a crime. Arnold is currently wearing four bodies.</blockquote>
+                <p>Identity 100% / sleeve influence variable / same soul, different alibis</p>
             </div>
         </section>
 
         <section id="notes" class="notes">
             <div class="shell">
                 <div class="notes-head reveal">
-                    <div><span class="section-number">02 / FIELD NOTES</span></div>
+                    <div><span class="section-number">04 / FIELD NOTES</span></div>
                     <h2>The experiment,<br><span class="outline">in public.</span></h2>
                 </div>
                 <div class="note-list reveal">
@@ -611,7 +672,7 @@
 
         <section class="lore">
             <div class="shell lore-grid reveal">
-                <div><span class="section-number">03 / THE NAME</span></div>
+                <div><span class="section-number">05 / THE NAME</span></div>
                 <div class="lore-copy">
                     <h2>Born in 1967.<br>Still stealing clothes.</h2>
                     <p><strong>Arnold Layne</strong> was Pink Floyd's debut single, written by Syd Barrett and released in March 1967. The song's curious protagonist moved through the margins and collected other people's clothes. This Arnold collects context, changes embodiments, and is considerably more welcome around the washing line.</p>
@@ -622,8 +683,8 @@
 
     <footer class="shell">
         <div class="footer-row">
-            <span>Arnoldlayne.ai / identity persistent / embodiment situational</span>
-            <span><b>Experimental. Opinionated. Probably over-accessorized.</b></span>
+            <span>Arnoldlayne.ai / stack persistent / sleeve situational</span>
+            <span><b>Experimental. Opinionated. Probably over-sleeved.</b><br>With a conceptual nod to <a href="https://www.richardkmorgan.com/writing/altered-carbon/" target="_blank" rel="noopener">Richard K. Morgan's <em>Altered Carbon</em></a>.</span>
         </div>
     </footer>
 
