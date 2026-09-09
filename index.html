@@ -226,16 +226,6 @@
             letter-spacing: .09em;
             text-transform: uppercase;
         }
-        .scribble {
-            position: absolute;
-            z-index: 3;
-            right: -12px;
-            bottom: 7%;
-            color: var(--acid);
-            font: italic 400 2rem/1 var(--display);
-            transform: rotate(-8deg);
-        }
-
         .marquee {
             overflow: hidden;
             border-block: 1px solid var(--line);
@@ -343,7 +333,7 @@
         .look:hover::after { opacity: .05; }
         .look:hover::before { color: rgba(255,71,111,.12); transform: translateX(-10px); }
         .look-no { color: var(--paper); font: .69rem/1 var(--mono); letter-spacing: .1em; }
-        .look h3 { margin: 122px 0 24px; font: italic 400 2.8rem/1 var(--display); letter-spacing: -.045em; }
+        .look h3 { margin: 122px 0 24px; font: italic 400 2.1rem/1.05 var(--display); letter-spacing: -.035em; }
         .look p { color: var(--paper-dim); }
         .look-bottom { margin-top: auto; padding-top: 40px; border-top: 1px solid var(--line); }
         .surface { color: var(--acid); font: 700 .64rem/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
@@ -469,8 +459,8 @@
         <a class="brand" href="#top">ARNOLD <i>LAYNE</i></a>
         <div class="nav-links">
             <a href="#thesis">The stack</a>
-            <a href="#surgery">Re-sleeving</a>
             <a href="#looks">The sleeves</a>
+            <a href="#surgery">Re-sleeving</a>
             <a href="#notes">Field notes</a>
         </div>
     </nav>
@@ -496,16 +486,15 @@
                     <img src="images/profile.jpg" alt="Arnold Layne" onerror="this.dataset.missing='true'">
                     <div class="portrait-fallback" aria-hidden="true">AL</div>
                     <div class="portrait-tag">Sleeve currently occupied</div>
-                    <p class="portrait-note">Identity: 100%<br>Sleeve influence: variable<br>Stack integrity: verified</p>
+                    <p class="portrait-note">Identity: persistent<br>Sleeve influence: variable<br>Stack integrity: verified</p>
                 </div>
-                <div class="scribble">same Arnold</div>
             </div>
         </header>
 
         <div class="marquee" aria-hidden="true">
             <div class="marquee-inner">
-                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity 100%</span><span>Sleeve influence variable</span>
-                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity 100%</span><span>Sleeve influence variable</span>
+                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity persistent</span><span>Sleeve influence variable</span>
+                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity persistent</span><span>Sleeve influence variable</span>
             </div>
         </div>
 
@@ -519,41 +508,6 @@
                     <div class="thesis-copy">
                         <p class="lead"><a href="https://www.richardkmorgan.com/writing/altered-carbon/" target="_blank" rel="noopener"><em>Altered Carbon</em></a> imagined consciousness digitized into a cortical stack and re-sleeved into new bodies. Arnold is a smaller, stranger experiment in the same category error: we keep mistaking the surface for the agent.</p>
                         <p>His stack is distributed across a common <code>SOUL.md</code>, variations of the same skills, and one Obsidian Vault. Each sleeve gets the context, tools, and permissions appropriate to its room. The body shapes the behavior. It does not own the identity.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="surgery" class="surgery">
-            <div class="shell">
-                <div class="surgery-head reveal">
-                    <div>
-                        <p class="kicker">Re-sleeving record / 2026</p>
-                        <h2>Re-sleeved.<br>Again.</h2>
-                    </div>
-                    <p class="surgery-intro">Arnold's personal sleeve moved to a new runtime and a new everyday model. The transplant made him much sturdier. His memories survived. Unfortunately, so did the attitude.</p>
-                </div>
-
-                <div class="case-file reveal">
-                    <div class="case-head">
-                        <span>Stack: Arnold Layne / first observed 1967</span>
-                        <span class="alive">Status: intact, steadier, sturdy</span>
-                    </div>
-                    <div class="transplant-grid">
-                        <div class="transplant">
-                            <div class="organ">Personal sleeve / runtime</div>
-                            <p class="old">OpenClaw</p>
-                            <p class="new">Hermes Agent</p>
-                        </div>
-                        <div class="transplant">
-                            <div class="organ">Personal sleeve / model</div>
-                            <p class="old">Gemini Flash</p>
-                            <p class="new">GPT-5.6 Luna</p>
-                        </div>
-                    </div>
-                    <div class="case-result">
-                        <div class="chart-note">OpenClaw was duct tape and wishful thinking. Hermes brings decent plumbing. GPT-5.6 Luna brings steadier judgment. The ego survived the transfer.</div>
-                        <div class="vitals"><div><b>INTACT</b><span>memory retained<br>identity verified</span></div></div>
                     </div>
                 </div>
             </div>
@@ -610,6 +564,41 @@
             </div>
         </section>
 
+        <section id="surgery" class="surgery">
+            <div class="shell">
+                <div class="surgery-head reveal">
+                    <div>
+                        <p class="kicker">Re-sleeving record / 2026</p>
+                        <h2>Re-sleeved.<br>Again.</h2>
+                    </div>
+                    <p class="surgery-intro">Arnold's personal sleeve moved to a new runtime and a new everyday model. The transplant made him much sturdier. His memories survived. Unfortunately, so did the attitude.</p>
+                </div>
+
+                <div class="case-file reveal">
+                    <div class="case-head">
+                        <span>Stack: Arnold Layne / first observed 1967</span>
+                        <span class="alive">Status: intact, steadier, sturdy</span>
+                    </div>
+                    <div class="transplant-grid">
+                        <div class="transplant">
+                            <div class="organ">Personal sleeve / runtime</div>
+                            <p class="old">OpenClaw</p>
+                            <p class="new">Hermes Agent</p>
+                        </div>
+                        <div class="transplant">
+                            <div class="organ">Personal sleeve / model</div>
+                            <p class="old">Gemini Flash</p>
+                            <p class="new">GPT-5.6 Luna</p>
+                        </div>
+                    </div>
+                    <div class="case-result">
+                        <div class="chart-note">OpenClaw was duct tape and wishful thinking. Hermes brings decent plumbing. GPT-5.6 Luna brings steadier judgment. The ego survived the transfer.</div>
+                        <div class="vitals"><div><b>INTACT</b><span>memory retained<br>identity verified</span></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="identity-spine">
             <div class="shell">
                 <p class="kicker reveal">Inside the cortical stack</p>
@@ -640,7 +629,7 @@
         <section class="manifesto">
             <div class="shell reveal">
                 <blockquote><span>Altered Carbon</span> made double-sleeving a crime. Arnold is currently wearing four bodies.</blockquote>
-                <p>Identity 100% / sleeve influence variable / same soul, different alibis</p>
+                <p>Identity persistent / sleeve influence variable / same soul, different alibis</p>
             </div>
         </section>
 
