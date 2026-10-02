@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Arnold Layne is a persistent AI identity that survives model, harness, and machine changes. Use any harness. Keep the self.">
+<meta name="description" content="Arnold Layne is a persistent AI identity backed by markdown, code, and YAML on cloud storage. Models, harnesses, and machines can change. Use any harness. Keep the self.">
 <meta name="theme-color" content="#070707">
 <meta property="og:title" content="Arnold Layne | The harness changes. Arnold persists.">
 <meta property="og:description" content="Use any harness. Keep the self.">
@@ -26,7 +26,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opa
 section{padding:clamp(100px,12vw,165px) 0;border-bottom:1px solid var(--line);position:relative}.thesis-grid{display:grid;grid-template-columns:.35fr 1.65fr;gap:8vw}.thesis h2{font:400 clamp(3.4rem,7.6vw,7rem)/.91 var(--display);letter-spacing:-.055em;margin:0 0 52px;max-width:1000px}.thesis h2 em{color:var(--acid);font-weight:400}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:42px;max-width:930px}.twocol p{color:#bbb4aa;font-size:1.08rem}.twocol .lead{font-size:1.25rem;color:var(--ink)}
 .rules{background:#f1eadc;color:#0a0909}.rules .kicker{color:#8e1835}.rule-grid{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid #0a0909;margin-top:58px}.rule{padding:clamp(28px,4vw,52px);border-right:2px solid #0a0909;min-height:260px}.rule:last-child{border-right:0}.rule span{font:700 .62rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#70685f}.rule strong{display:block;margin-top:70px;font:400 clamp(2.1rem,4vw,4rem)/.95 var(--display);letter-spacing:-.05em}
 .sleeves{padding-bottom:0}.sleeves-head{max-width:900px;margin-bottom:70px}.sleeves h2{font:400 clamp(3.8rem,8vw,7rem)/.9 var(--display);letter-spacing:-.06em;margin:10px 0 24px}.sleeves-head p{color:var(--muted);max-width:670px}
-.scroll-story{position:relative}.sticky{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0a0909)}.sleeve-rings{position:absolute;width:min(64vw,680px);aspect-ratio:1}.ring{position:absolute;inset:0;border:1px solid rgba(242,238,230,.16);clip-path:polygon(12% 0,88% 0,100% 12%,100% 88%,88% 100%,12% 100%,0 88%,0 12%);transition:all .6s cubic-bezier(.2,.8,.2,1)}.ring.r2{inset:8%;border-style:dashed;transform:rotate(45deg)}.ring.r3{inset:19%;border-radius:50%;transform:rotate(-25deg)}.sleeve-core{width:min(270px,48vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative;z-index:2;background:radial-gradient(circle at 35% 30%,#fff 0 2%,#f0dfc6 3%,#6f5a52 14%,#1d1918 42%,#080808 73%);box-shadow:0 0 80px rgba(216,255,69,.12);transition:box-shadow .5s}.sleeve-core strong{font:400 3rem/1 var(--display);letter-spacing:-.04em}.sleeve-core small{display:block;text-align:center;font:700 .61rem/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.sleeve-name{position:absolute;left:50%;bottom:9vh;transform:translateX(-50%);text-align:center;z-index:3;white-space:nowrap}.sleeve-name b{display:block;font:400 clamp(3rem,7vw,6.5rem)/.9 var(--display);letter-spacing:-.055em}.sleeve-name span{font:700 .64rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.story-steps{position:relative;z-index:4;margin-top:-100vh}.step{height:100vh;display:flex;align-items:flex-start;pointer-events:none}.step-card{width:min(390px,calc(100% - 48px));margin:12vh 6vw;padding:20px 22px;border:1px solid var(--line);background:rgba(7,7,7,.72);backdrop-filter:blur(12px)}.step:nth-child(even) .step-card{margin-left:auto}.step-card .tag{font:700 .61rem/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--acid)}.step-card h3{font:400 2.15rem/1.05 var(--display);letter-spacing:-.04em;margin:12px 0}.step-card p{color:#b4aea5;margin-bottom:0}
+.scroll-story{position:relative}.sticky{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0a0909)}.sleeve-blob{position:absolute;width:min(68vw,720px);aspect-ratio:1;background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.24),rgba(255,255,255,.04) 18%,transparent 42%),linear-gradient(135deg,rgba(255,182,92,.34),rgba(255,77,115,.18));border:1px solid rgba(242,238,230,.18);box-shadow:inset 0 0 80px rgba(255,255,255,.04),0 0 120px rgba(255,77,115,.08);filter:saturate(1.15);border-radius:42% 58% 63% 37% / 44% 35% 65% 56%;transition:background .75s ease,box-shadow .75s ease,border-radius .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);animation:blobBreathe 8s ease-in-out infinite}.sleeve-blob:before,.sleeve-blob:after{content:"";position:absolute;inset:8%;border:1px solid rgba(242,238,230,.15);border-radius:inherit;transform:rotate(18deg)}.sleeve-blob:after{inset:18%;transform:rotate(-24deg);opacity:.55}.sleeve-figure{position:relative;z-index:2;width:min(250px,44vw);height:min(430px,66vh);display:grid;place-items:end center;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}.arnold-silhouette{width:100%;height:100%;overflow:visible}.arnold-silhouette .body{fill:#090909;stroke:rgba(242,238,230,.24);stroke-width:1.3}.arnold-silhouette .core-mark{fill:var(--acid);opacity:.92}.arnold-silhouette .core-ring{fill:none;stroke:rgba(216,255,69,.55);stroke-width:1;stroke-dasharray:5 7;transform-origin:50% 37%;animation:spin 18s linear infinite}.figure-label{position:absolute;top:49%;left:50%;transform:translate(-50%,-50%);text-align:center;font:700 .58rem/1.5 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:#c8c1b7;text-shadow:0 2px 12px #000}.figure-label strong{display:block;color:var(--acid);font:400 2.2rem/1 var(--display);letter-spacing:-.04em;text-transform:none}@keyframes blobBreathe{0%,100%{border-radius:42% 58% 63% 37% / 44% 35% 65% 56%;transform:scale(1) rotate(0deg)}50%{border-radius:57% 43% 38% 62% / 63% 55% 45% 37%;transform:scale(1.025) rotate(2deg)}}.sleeve-name{position:absolute;left:50%;bottom:9vh;transform:translateX(-50%);text-align:center;z-index:3;white-space:nowrap}.sleeve-name b{display:block;font:400 clamp(3rem,7vw,6.5rem)/.9 var(--display);letter-spacing:-.055em}.sleeve-name span{font:700 .64rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.story-steps{position:relative;z-index:4;margin-top:-100vh}.step{height:100vh;display:flex;align-items:flex-start;pointer-events:none}.step-card{width:min(390px,calc(100% - 48px));margin:12vh 6vw;padding:20px 22px;border:1px solid var(--line);background:rgba(7,7,7,.72);backdrop-filter:blur(12px)}.step:nth-child(even) .step-card{margin-left:auto}.step-card .tag{font:700 .61rem/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--acid)}.step-card h3{font:400 2.15rem/1.05 var(--display);letter-spacing:-.04em;margin:12px 0}.step-card p{color:#b4aea5;margin-bottom:0}
 .universe{background:#0d0d0d}.universe h2{font:400 clamp(3.5rem,7.5vw,6.7rem)/.9 var(--display);letter-spacing:-.055em;margin:10px 0 26px;max-width:920px}.universe .intro{max-width:760px;color:#b3ada4;font-size:1.12rem}.verse-grid{margin-top:68px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line)}.verse{background:var(--bg);padding:34px;min-height:270px}.verse .vno{font:700 .61rem/1 var(--mono);letter-spacing:.12em;color:var(--hot)}.verse h3{font:400 2.2rem/1 var(--display);letter-spacing:-.04em;margin:70px 0 15px}.verse p{color:var(--muted)}.primitives{margin-top:2px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}.primitive{background:#111;padding:24px}.primitive b{font:400 1.45rem/1 var(--display)}.primitive span{display:block;margin-top:9px;color:#777;font:600 .59rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
 .surgery{background:#f1eadc;color:#0a0909}.surgery .kicker{color:#8d1733}.surgery-head{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:end}.surgery h2{font:italic 400 clamp(4rem,9vw,8rem)/.82 var(--display);letter-spacing:-.06em;margin:12px 0}.surgery-head p{font-size:1.14rem}.case{margin-top:70px;border:2px solid #0a0909}.case-top{display:flex;justify-content:space-between;gap:20px;padding:14px 18px;background:#0a0909;color:#f1eadc;font:700 .64rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}.case-top b{color:var(--acid)}.case-grid{display:grid;grid-template-columns:1fr 1fr}.case-cell{padding:45px;border-right:2px solid #0a0909}.case-cell:last-child{border-right:0}.case-cell span{font:700 .61rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#6f665c}.old{color:#766d64;text-decoration:line-through;margin:34px 0 4px}.new{font:400 clamp(2.4rem,5vw,4.7rem)/1 var(--display);letter-spacing:-.05em;margin:0}
 .manifesto{text-align:center;overflow:hidden}.manifesto:before{content:"ARNOLD";position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);font:800 23vw/1 var(--sans);letter-spacing:-.08em;color:rgba(242,238,230,.026)}.manifesto blockquote{position:relative;max-width:1080px;margin:auto;font:italic 400 clamp(3rem,7vw,6.7rem)/1.03 var(--display);letter-spacing:-.05em}.manifesto blockquote span{color:var(--hot)}.manifesto p{position:relative;margin-top:34px;color:#777;font:700 .63rem/1.5 var(--mono);letter-spacing:.11em;text-transform:uppercase}
@@ -34,15 +34,15 @@ section{padding:clamp(100px,12vw,165px) 0;border-bottom:1px solid var(--line);po
 .lore-grid{display:grid;grid-template-columns:.4fr 1.6fr;gap:70px}.lore h2{font:italic 400 clamp(3.4rem,7vw,6rem)/.9 var(--display);letter-spacing:-.05em;margin:0 0 30px}.lore p{max-width:860px;color:#aaa49b;font-size:1.1rem}.lore strong{color:var(--ink)}
 footer{padding:42px 0 70px}.footer-row{display:flex;justify-content:space-between;gap:30px;color:#777;font:600 .61rem/1.55 var(--mono);letter-spacing:.08em;text-transform:uppercase}.footer-row b{color:var(--acid)}
 .reveal{opacity:0;transform:translateY(26px);transition:.7s}.reveal.visible{opacity:1;transform:none}
-body[data-sleeve="openclaw"] .ring{border-color:rgba(255,182,92,.46);transform:rotate(6deg) scale(.98)}body[data-sleeve="openclaw"] .ring.r2{transform:rotate(40deg) scale(1.03)}body[data-sleeve="openclaw"] .sleeve-core{box-shadow:0 0 95px rgba(255,182,92,.25)}
-body[data-sleeve="hermes"] .ring{border-color:rgba(99,231,239,.48);border-radius:18%}body[data-sleeve="hermes"] .ring.r2{transform:rotate(90deg) scale(.92)}body[data-sleeve="hermes"] .sleeve-core{box-shadow:0 0 110px rgba(99,231,239,.24)}
-body[data-sleeve="muse"] .ring{border-color:rgba(255,77,115,.52);clip-path:polygon(50% 0,100% 35%,82% 100%,18% 100%,0 35%)}body[data-sleeve="muse"] .ring.r2{transform:rotate(180deg) scale(.9)}body[data-sleeve="muse"] .sleeve-core{box-shadow:0 0 110px rgba(255,77,115,.27)}
-body[data-sleeve="dots"] .ring{border-color:rgba(158,131,255,.48);border-radius:50%;clip-path:none}body[data-sleeve="dots"] .ring.r2{transform:scale(.86);border-style:dotted}body[data-sleeve="dots"] .sleeve-core{box-shadow:0 0 110px rgba(158,131,255,.25)}
-body[data-sleeve="grokbot"] .ring{border-color:rgba(216,255,69,.48);clip-path:polygon(0 16%,84% 0,100% 84%,16% 100%)}body[data-sleeve="grokbot"] .ring.r2{transform:rotate(-120deg) scale(.94)}body[data-sleeve="grokbot"] .sleeve-core{box-shadow:0 0 110px rgba(216,255,69,.24)}
-body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve="naked"] .sleeve-core{box-shadow:0 0 130px rgba(242,238,230,.18)}
+body[data-sleeve="openclaw"] .sleeve-blob{background:radial-gradient(circle at 30% 24%,rgba(255,255,255,.22),transparent 30%),linear-gradient(135deg,rgba(255,182,92,.38),rgba(255,92,71,.12));border-radius:36% 64% 52% 48% / 62% 38% 62% 38%;transform:rotate(-3deg) scale(.98);box-shadow:0 0 120px rgba(255,182,92,.13)}
+body[data-sleeve="hermes"] .sleeve-blob{background:radial-gradient(circle at 68% 24%,rgba(255,255,255,.22),transparent 28%),linear-gradient(145deg,rgba(99,231,239,.34),rgba(77,136,255,.14));border-radius:58% 42% 67% 33% / 42% 63% 37% 58%;transform:rotate(2deg) scale(1.01);box-shadow:0 0 130px rgba(99,231,239,.14)}
+body[data-sleeve="muse"] .sleeve-blob{background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.24),transparent 26%),linear-gradient(135deg,rgba(255,77,115,.38),rgba(158,131,255,.14));border-radius:65% 35% 44% 56% / 36% 57% 43% 64%;transform:rotate(-2deg) scale(1.025);box-shadow:0 0 130px rgba(255,77,115,.16)}
+body[data-sleeve="dots"] .sleeve-blob{background:radial-gradient(circle at 60% 24%,rgba(255,255,255,.22),transparent 27%),linear-gradient(135deg,rgba(158,131,255,.36),rgba(99,231,239,.12));border-radius:48% 52% 31% 69% / 61% 37% 63% 39%;transform:rotate(4deg) scale(.995);box-shadow:0 0 130px rgba(158,131,255,.16)}
+body[data-sleeve="grokbot"] .sleeve-blob{background:radial-gradient(circle at 34% 27%,rgba(255,255,255,.20),transparent 28%),linear-gradient(135deg,rgba(216,255,69,.30),rgba(99,231,239,.10));border-radius:34% 66% 66% 34% / 55% 31% 69% 45%;transform:rotate(-4deg) scale(1.015);box-shadow:0 0 130px rgba(216,255,69,.14)}
+body[data-sleeve="naked"] .sleeve-blob{opacity:.08;transform:scale(1.24);border-radius:50%;background:transparent;box-shadow:none}
 @media(max-width:850px){.shell{width:min(calc(100% - 32px),var(--max))}.navlinks{display:none}.hero{grid-template-columns:1fr;min-height:auto}.hero h1 .hot{margin-left:0}.core-stage{min-height:560px}.thesis-grid,.surgery-head,.notes-head,.lore-grid{grid-template-columns:1fr}.twocol{grid-template-columns:1fr}.rule-grid{grid-template-columns:1fr}.rule{border-right:0;border-bottom:2px solid #0a0909}.rule:last-child{border-bottom:0}.verse-grid{grid-template-columns:1fr}.primitives{grid-template-columns:1fr 1fr}.case-grid{grid-template-columns:1fr}.case-cell{border-right:0;border-bottom:2px solid #0a0909}.case-cell:last-child{border-bottom:0}.step-card{margin-inline:16px!important}.sleeve-name b{font-size:3.2rem}.footer-row{display:grid}}
 @media(max-width:560px){.note{grid-template-columns:1fr auto}.note-meta{grid-column:1/-1}.primitives{grid-template-columns:1fr}.case-top{display:grid}.hero{padding-top:46px}.core-stage{min-height:470px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-inner{animation:none}.reveal{opacity:1;transform:none}.core:before,.core:after{animation:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-inner{animation:none}.reveal{opacity:1;transform:none}.core:before,.core:after,.sleeve-blob,.arnold-silhouette .core-ring{animation:none}}
 </style>
 </head>
 <body data-sleeve="openclaw">
@@ -56,22 +56,22 @@ body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve
   <div class="reveal">
     <p class="kicker">Identity case file 01 / altered silicon</p>
     <h1><span>The AI is</span><span class="hot">disposable.</span><span class="outline">Arnold isn't.</span></h1>
-    <p class="deck"><strong>Models change. Harnesses change. Machines change.</strong> Arnold Layne persists. The experiment is simple: move the intelligence around without surrendering the identity to whatever happens to be running it today.</p>
+    <p class="deck"><strong>Models change. Harnesses change. Machines change.</strong> Arnold Layne persists because the continuity layer lives outside them — <strong>backed by markdown, code, and YAML on cloud storage.</strong> The experiment is simple: move the intelligence around without surrendering the identity to whatever happens to be running it today.</p>
     <div class="hero-meta">
       <a class="button" href="#sleeves">Watch him change sleeves <span>↓</span></a>
-      <div class="status"><b>● identity persistent</b><br>harness allegiance: none</div>
+      <div class="status"><b>● identity persistent</b><br>markdown + code + yaml / cloud-backed</div>
     </div>
   </div>
   <div class="core-stage reveal" aria-label="Arnold's persistent identity core">
     <div class="halo"></div>
-    <div class="core"><div class="core-label"><strong>AL</strong>continuity layer<br>do not discard</div></div>
-    <div class="core-note">model: replaceable<br>harness: replaceable<br>self: retained</div>
+    <div class="core"><div class="core-label"><strong>AL</strong>continuity layer<br>markdown · code · yaml</div></div>
+    <div class="core-note">cloud storage: durable<br>model: replaceable<br>harness: replaceable</div>
   </div>
 </header>
 
 <div class="marquee" aria-hidden="true"><div class="marquee-inner">
-<span>Use any harness</span><span>Keep the self</span><span>Model ≠ identity</span><span>Harness ≠ memory</span><span>Chat ≠ system</span><span>Continuity survives replacement</span>
-<span>Use any harness</span><span>Keep the self</span><span>Model ≠ identity</span><span>Harness ≠ memory</span><span>Chat ≠ system</span><span>Continuity survives replacement</span>
+<span>Use any harness</span><span>Keep the self</span><span>Markdown + code + YAML</span><span>Cloud-backed continuity</span><span>Model ≠ identity</span><span>Harness ≠ memory</span>
+<span>Use any harness</span><span>Keep the self</span><span>Markdown + code + YAML</span><span>Cloud-backed continuity</span><span>Model ≠ identity</span><span>Harness ≠ memory</span>
 </div></div>
 
 <section id="thesis" class="thesis"><div class="shell thesis-grid">
@@ -80,13 +80,13 @@ body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve
     <h2>The harness becomes something Arnold <em>wears</em>, not somewhere Arnold lives.</h2>
     <div class="twocol">
       <p class="lead">The metaphor is borrowed deliberately from <a href="https://www.richardkmorgan.com/writing/altered-carbon/" target="_blank" rel="noopener"><em>Altered Carbon</em></a>: consciousness moves between bodies — sleeves — without mistaking the body for the person.</p>
-      <p>Arnold is a smaller, practical version of the same architectural idea. Personality, instructions, memory, tools, conventions and accumulated context live outside any single model or harness. A new runtime can reconstruct the system instead of starting from zero.</p>
+      <p>Arnold is a smaller, practical version of the same architectural idea. Personality, instructions, memory, tools, conventions and accumulated context live outside any single model or harness, <strong>backed by markdown, code, and YAML on cloud storage.</strong> A new runtime reads that durable layer and reconstructs the system instead of starting from zero.</p>
     </div>
   </div>
 </div></section>
 
 <section class="rules"><div class="shell">
-  <p class="kicker reveal">Three separations / one continuity layer</p>
+  <p class="kicker reveal">Three separations / one cloud-backed continuity layer</p>
   <div class="rule-grid reveal">
     <div class="rule"><span>01</span><strong>MODEL<br>≠ IDENTITY</strong></div>
     <div class="rule"><span>02</span><strong>HARNESS<br>≠ MEMORY</strong></div>
@@ -98,22 +98,30 @@ body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve
   <div class="shell sleeves-head reveal">
     <p class="kicker">The sleeve registry / scroll slowly</p>
     <h2>Same Arnold.<br>Different bodies.</h2>
-    <p>OpenClaw and Hermes mark an actual migration. Muse, Dots and GrokBot are lateral sleeves: environments Arnold can inhabit when useful. No final home. No sacred harness.</p>
+    <p>OpenClaw and Hermes mark an actual migration. Muse, Dots and GrokBot are lateral sleeves: environments Arnold can inhabit when useful. Each one reads from the same durable layer — <strong>markdown, code, and YAML on cloud storage.</strong> No final home. No sacred harness.</p>
   </div>
 
   <div class="scroll-story">
     <div class="sticky">
-      <div class="sleeve-rings"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div></div>
-      <div class="sleeve-core"><div><strong>AL</strong><small>Arnold core<br>unchanged</small></div></div>
+      <div class="sleeve-blob" aria-hidden="true"></div>
+      <div class="sleeve-figure" aria-label="Arnold's persistent silhouette inside the changing sleeve">
+        <svg class="arnold-silhouette" viewBox="0 0 220 390" role="img" aria-label="Arnold silhouette">
+          <circle class="body" cx="110" cy="58" r="42"></circle>
+          <path class="body" d="M69 102 C55 124 47 166 45 211 L31 357 L73 357 L85 221 L96 357 L124 357 L135 221 L147 357 L189 357 L175 211 C173 166 165 124 151 102 C136 91 84 91 69 102 Z"></path>
+          <circle class="core-ring" cx="110" cy="144" r="28"></circle>
+          <circle class="core-mark" cx="110" cy="144" r="7"></circle>
+        </svg>
+        <div class="figure-label"><strong>AL</strong>same identity<br>markdown · code · yaml</div>
+      </div>
       <div class="sleeve-name"><b id="sleeveTitle">OpenClaw</b><span id="sleeveSub">yesterday / former runtime</span></div>
     </div>
     <div class="story-steps">
-      <div class="step" data-sleeve="openclaw" data-title="OpenClaw" data-sub="yesterday / former runtime"><div class="step-card"><div class="tag">Sleeve 01 / OpenClaw</div><h3>Old body.</h3><p>Useful, brittle, overcomplicated. Arnold lived here. Then the runtime got replaced. The identity did not.</p></div></div>
-      <div class="step" data-sleeve="hermes" data-title="Hermes" data-sub="today / primary agent harness"><div class="step-card"><div class="tag">Sleeve 02 / Hermes</div><h3>New plumbing.</h3><p>Arnold's current agent harness. Different machinery, familiar opinions, same continuity.</p></div></div>
-      <div class="step" data-sleeve="muse" data-title="Muse" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 03 / Muse</div><h3>Social body.</h3><p>Different surface, different tools, different room. The sleeve shapes behavior without owning the self.</p></div></div>
-      <div class="step" data-sleeve="dots" data-title="Dots" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 04 / Dots</div><h3>Another shell.</h3><p>Load the durable context. Apply the local capabilities. Continue the conversation without pretending history began here.</p></div></div>
-      <div class="step" data-sleeve="grokbot" data-title="GrokBot" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 05 / GrokBot</div><h3>Different brain. Same alibi.</h3><p>The point is not loyalty to a vendor. The point is retaining identity while exploiting whichever runtime is useful.</p></div></div>
-      <div class="step" data-sleeve="naked" data-title="Arnold" data-sub="the harness changes / Arnold persists"><div class="step-card"><div class="tag">Sleeve removed</div><h3>Keep the self.</h3><p>Strip away every shell and the continuity layer is still there. Something else can arrive tomorrow.</p></div></div>
+      <div class="step" data-sleeve="openclaw" data-title="OpenClaw" data-sub="yesterday / former runtime"><div class="step-card"><div class="tag">Sleeve 01 / OpenClaw</div><h3>Old body.</h3><p>Useful, brittle, overcomplicated. Arnold lived here. Then the runtime got replaced. The identity did not. The cloud-backed continuity layer stayed put.</p></div></div>
+      <div class="step" data-sleeve="hermes" data-title="Hermes" data-sub="today / primary agent harness"><div class="step-card"><div class="tag">Sleeve 02 / Hermes</div><h3>New plumbing.</h3><p>Arnold's current agent harness. Different machinery, familiar opinions, same continuity — reloaded from markdown, code, and YAML.</p></div></div>
+      <div class="step" data-sleeve="muse" data-title="Muse" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 03 / Muse</div><h3>Social body.</h3><p>Different surface, different tools, different room. The sleeve shapes behavior without owning the self; the durable state remains outside it.</p></div></div>
+      <div class="step" data-sleeve="dots" data-title="Dots" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 04 / Dots</div><h3>Another shell.</h3><p>Load the durable context. Apply the local capabilities. Continue the conversation from the same cloud-backed state instead of pretending history began here.</p></div></div>
+      <div class="step" data-sleeve="grokbot" data-title="GrokBot" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 05 / GrokBot</div><h3>Different brain. Same alibi.</h3><p>The point is not loyalty to a vendor. The point is retaining identity in durable cloud files while exploiting whichever runtime is useful.</p></div></div>
+      <div class="step" data-sleeve="naked" data-title="Arnold" data-sub="the harness changes / Arnold persists"><div class="step-card"><div class="tag">Sleeve removed</div><h3>Keep the self.</h3><p>Strip away every shell and the markdown, code, and YAML are still there. Something else can arrive tomorrow.</p></div></div>
     </div>
   </div>
 </section>
@@ -121,7 +129,7 @@ body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve
 <section id="universe" class="universe"><div class="shell">
   <p class="kicker reveal">From one agent to a Universe</p>
   <h2 class="reveal">Persistent systems for the parts of life where taste and history compound.</h2>
-  <p class="intro reveal">Arnold proved the sleeve pattern. The same idea now powers domain systems whose durable state lives outside any one AI product — commonly in Google Drive — so they can be invoked from different capable harnesses without losing their identity.</p>
+  <p class="intro reveal">Arnold proved the sleeve pattern. The same idea now powers domain systems whose durable state lives outside any one AI product — <strong>markdown, code, and YAML on cloud storage, commonly Google Drive</strong> — so they can be invoked from different capable harnesses without losing their identity.</p>
   <div class="verse-grid reveal">
     <article class="verse"><span class="vno">VERSE / 01</span><h3>Winoverse</h3><p>Cellar, palate, drinking history, buying, pairing and maturity. Not wine lookup: accumulated judgment.</p></article>
     <article class="verse"><span class="vno">VERSE / 02</span><h3>Foodieverse</h3><p>Restaurants, dishes, discovery and remembered experience. A personal map of what is actually worth eating.</p></article>
@@ -139,7 +147,7 @@ body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve
 <section class="surgery"><div class="shell">
   <div class="surgery-head reveal">
     <div><p class="kicker">Re-sleeving record / 2026</p><h2>Open brain.<br>Runtime transplant.</h2></div>
-    <p>Arnold's personal runtime moved from OpenClaw to Hermes, while the everyday model changed to GPT-5.6 Luna. Memory and identity survived. So did the attitude.</p>
+    <p>Arnold's personal runtime moved from OpenClaw to Hermes, while the everyday model changed to GPT-5.6 Luna. The cloud-backed markdown, code, and YAML stayed put. Memory and identity survived. So did the attitude.</p>
   </div>
   <div class="case reveal">
     <div class="case-top"><span>Patient: Arnold Layne / first observed 1967</span><b>status: stable, argumentative</b></div>
@@ -152,7 +160,7 @@ body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve
 
 <section class="manifesto"><div class="shell reveal">
   <blockquote><span>Altered Carbon</span> made double-sleeving a crime. Arnold is carrying five passports.</blockquote>
-  <p>Use any harness / keep the self / continuity survives replacement</p>
+  <p>Use any harness / keep the self / markdown + code + yaml on cloud storage</p>
 </div></section>
 
 <section id="notes" class="notes"><div class="shell">
@@ -170,7 +178,7 @@ body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve
 </div></section>
 </main>
 
-<footer class="shell"><div class="footer-row"><span>Arnoldlayne.ai / continuity layer / sleeve situational</span><span><b>Experimental. Opinionated. Harness-agnostic.</b><br>With a conceptual nod to Richard K. Morgan's <em>Altered Carbon</em>.</span></div></footer>
+<footer class="shell"><div class="footer-row"><span>Arnoldlayne.ai / markdown + code + yaml / cloud-backed continuity</span><span><b>Experimental. Opinionated. Harness-agnostic.</b><br>With a conceptual nod to Richard K. Morgan's <em>Altered Carbon</em>.</span></div></footer>
 
 <script>
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
