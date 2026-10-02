@@ -1,704 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Arnold Layne is one persistent agent identity re-sleeved across Hermes, Webex, work chat, and Muse. One stack. Four sleeves. Same Arnold.">
-    <meta name="theme-color" content="#0a0909">
-    <meta property="og:title" content="Arnold Layne | The soul has an API.">
-    <meta property="og:description" content="One stack. Four sleeves. Same Arnold.">
-    <title>Arnold Layne | The soul has an API.</title>
-    <style>
-        :root {
-            --black: #0a0909;
-            --black-2: #11100f;
-            --paper: #f3ecdd;
-            --paper-dim: #c8c0b2;
-            --grey: #817c74;
-            --line: rgba(243,236,221,.17);
-            --acid: #d9ff43;
-            --hot: #ff476f;
-            --blue: #55dbea;
-            --bone: #d8c7aa;
-            --taupe: #9e8c79;
-            --ash: #969b9e;
-            --umber: #6c5143;
-            --display: Georgia, "Times New Roman", serif;
-            --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-            --max: 1240px;
-            --mouse-x: 70%;
-            --mouse-y: 10%;
-        }
-
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            margin: 0;
-            overflow-x: hidden;
-            color: var(--paper);
-            background:
-                radial-gradient(circle 500px at var(--mouse-x) var(--mouse-y), rgba(255,71,111,.11), transparent 70%),
-                var(--black);
-            font-family: var(--sans);
-            line-height: 1.6;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: 10;
-            pointer-events: none;
-            opacity: .14;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
-        }
-
-        ::selection { color: var(--black); background: var(--acid); }
-        a { color: inherit; }
-        img { display: block; max-width: 100%; }
-        h1, h2, h3, p { margin-top: 0; }
-        button, a { -webkit-tap-highlight-color: transparent; }
-        code { color: var(--acid); font-family: var(--mono); font-size: .86em; }
-
-        .shell { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
-        .kicker {
-            color: var(--acid);
-            font: 700 .68rem/1.2 var(--mono);
-            letter-spacing: .16em;
-            text-transform: uppercase;
-        }
-        .section-number {
-            color: var(--grey);
-            font: 400 .7rem/1 var(--mono);
-            letter-spacing: .12em;
-        }
-        .outline {
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(243,236,221,.62);
-        }
-
-        .nav {
-            position: relative;
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 26px 0;
-            border-bottom: 1px solid var(--line);
-        }
-        .brand {
-            text-decoration: none;
-            font: 800 .79rem/1 var(--sans);
-            letter-spacing: .18em;
-        }
-        .brand i { color: var(--hot); font-style: normal; }
-        .nav-links { display: flex; gap: 28px; }
-        .nav-links a {
-            color: var(--paper-dim);
-            font: .69rem/1 var(--mono);
-            letter-spacing: .08em;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-        .nav-links a:hover { color: var(--acid); }
-
-        .hero {
-            position: relative;
-            min-height: 840px;
-            display: grid;
-            grid-template-columns: minmax(0, 1.14fr) minmax(330px, .86fr);
-            gap: clamp(40px, 6vw, 88px);
-            align-items: center;
-            padding: 64px 0 105px;
-        }
-        .hero-copy { position: relative; z-index: 2; }
-        .hero h1 {
-            width: 115%;
-            margin: 24px 0 34px;
-            font-family: var(--display);
-            font-size: clamp(4.8rem, 10.7vw, 9.3rem);
-            font-weight: 400;
-            line-height: .77;
-            letter-spacing: -.075em;
-        }
-        .hero h1 .line { display: block; }
-        .hero h1 .italic { margin-left: .35em; color: var(--hot); font-style: italic; }
-        .hero-deck {
-            max-width: 670px;
-            margin-bottom: 36px;
-            color: #d9d2c6;
-            font-size: clamp(1.1rem, 2vw, 1.42rem);
-            line-height: 1.52;
-        }
-        .hero-deck strong { color: var(--paper); }
-        .cta-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-        .button {
-            display: inline-flex;
-            align-items: center;
-            gap: 28px;
-            padding: 15px 18px;
-            color: var(--black);
-            background: var(--acid);
-            border: 1px solid var(--acid);
-            font: 800 .68rem/1 var(--mono);
-            letter-spacing: .1em;
-            text-decoration: none;
-            text-transform: uppercase;
-            transition: transform .2s ease, color .2s ease, background .2s ease;
-        }
-        .button:hover { color: var(--acid); background: transparent; transform: translate(4px, -4px); }
-        .status { color: var(--grey); font: .64rem/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
-        .status b { color: var(--blue); font-weight: 400; }
-
-        .portrait-stage { position: relative; align-self: stretch; min-height: 650px; isolation: isolate; }
-        .portrait-stage::before,
-        .portrait-stage::after {
-            content: "";
-            position: absolute;
-            background-image: linear-gradient(rgba(216,199,170,.46), rgba(216,199,170,.46)), url("images/profile.jpg");
-            background-position: center;
-            background-size: cover;
-            clip-path: polygon(7% 0, 100% 0, 100% 93%, 88% 100%, 0 100%, 0 9%);
-            filter: grayscale(1) contrast(1.08);
-        }
-        .portrait-stage::before { inset: 10% 18% 9% -8%; z-index: -2; opacity: .26; }
-        .portrait-stage::after {
-            inset: -1% -8% 18% 24%;
-            z-index: -1;
-            opacity: .34;
-            background-image: linear-gradient(rgba(108,81,67,.58), rgba(108,81,67,.58)), url("images/profile.jpg");
-        }
-        .portrait-frame {
-            position: absolute;
-            inset: 4% 0 2% 2%;
-            overflow: hidden;
-            background: #161412;
-            clip-path: polygon(7% 0, 100% 0, 100% 93%, 88% 100%, 0 100%, 0 9%);
-            box-shadow: 0 40px 110px rgba(0,0,0,.66);
-        }
-        .portrait-frame::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 55%, rgba(10,9,9,.78));
-            pointer-events: none;
-        }
-        .portrait-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: saturate(.78) contrast(1.08);
-        }
-        .portrait-fallback {
-            position: absolute;
-            inset: 0;
-            display: none;
-            place-items: center;
-            color: var(--hot);
-            background:
-                linear-gradient(115deg, transparent 48%, rgba(217,255,67,.07) 48.3%, transparent 48.6%),
-                radial-gradient(circle at 50% 25%, #302729, #12110f 64%);
-            font: italic 400 clamp(6rem, 14vw, 12rem)/1 var(--display);
-        }
-        .portrait-frame img[data-missing="true"] + .portrait-fallback { display: grid; }
-        .portrait-tag {
-            position: absolute;
-            right: -33px;
-            top: 31%;
-            z-index: 2;
-            padding: 8px 12px;
-            color: var(--black);
-            background: var(--bone);
-            font: 800 .62rem/1 var(--mono);
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            transform: rotate(90deg);
-        }
-        .portrait-note {
-            position: absolute;
-            z-index: 2;
-            left: 34px;
-            bottom: 38px;
-            margin: 0;
-            color: var(--paper);
-            font: .65rem/1.55 var(--mono);
-            letter-spacing: .09em;
-            text-transform: uppercase;
-        }
-        .marquee {
-            overflow: hidden;
-            border-block: 1px solid var(--line);
-            background: var(--paper);
-            color: var(--black);
-            transform: rotate(-1.1deg) scale(1.02);
-        }
-        .marquee-inner {
-            display: flex;
-            width: max-content;
-            padding: 12px 0;
-            animation: crawl 22s linear infinite;
-            font: 800 .72rem/1 var(--mono);
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-        .marquee-inner span::after { content: "✦"; color: var(--hot); margin: 0 28px; }
-        @keyframes crawl { to { transform: translateX(-50%); } }
-
-        section { position: relative; padding: clamp(100px, 12vw, 160px) 0; border-bottom: 1px solid var(--line); }
-        .thesis-grid { display: grid; grid-template-columns: .38fr 1.62fr; gap: clamp(40px, 8vw, 110px); }
-        .thesis h2 {
-            max-width: 930px;
-            margin: 0 0 48px;
-            font: 400 clamp(3.4rem, 7.8vw, 7.2rem)/.9 var(--display);
-            letter-spacing: -.055em;
-        }
-        .thesis h2 em { color: var(--acid); font-weight: 400; }
-        .thesis-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; max-width: 900px; }
-        .thesis-copy p { color: var(--paper-dim); font-size: 1.08rem; }
-        .thesis-copy .lead { color: var(--paper); font-size: 1.28rem; }
-
-        .surgery { background: var(--paper); color: var(--black); }
-        .surgery .kicker { color: #8d1733; }
-        .surgery-head { display: grid; grid-template-columns: 1fr .8fr; gap: 60px; align-items: end; margin-bottom: 72px; }
-        .surgery h2 {
-            margin: 14px 0 0;
-            font: italic 400 clamp(4rem, 9vw, 8.2rem)/.82 var(--display);
-            letter-spacing: -.06em;
-        }
-        .surgery-intro { max-width: 490px; margin: 0 0 8px auto; font-size: 1.16rem; }
-        .case-file { border: 2px solid var(--black); }
-        .case-head {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 15px 18px;
-            color: var(--paper);
-            background: var(--black);
-            font: .67rem/1 var(--mono);
-            letter-spacing: .1em;
-            text-transform: uppercase;
-        }
-        .case-head .alive { color: var(--acid); }
-        .transplant-grid { display: grid; grid-template-columns: 1fr 1fr; }
-        .transplant { padding: clamp(28px, 5vw, 58px); border-right: 2px solid var(--black); }
-        .transplant:last-child { border-right: 0; }
-        .organ { color: #685f55; font: .66rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-        .old { margin: 38px 0 4px; color: #7b7268; font-size: 1rem; text-decoration: line-through; }
-        .new { margin: 0; font: 400 clamp(2.3rem, 5vw, 4.6rem)/1 var(--display); letter-spacing: -.05em; }
-        .case-result {
-            display: grid;
-            grid-template-columns: 1.35fr .65fr;
-            border-top: 2px solid var(--black);
-        }
-        .chart-note { padding: clamp(28px, 4vw, 48px); font: italic 400 clamp(1.3rem, 2.5vw, 2rem)/1.4 var(--display); }
-        .vitals { display: grid; place-items: center; padding: 28px; color: var(--paper); background: var(--hot); text-align: center; }
-        .vitals b { display: block; font: 400 2.7rem/1 var(--display); }
-        .vitals span { font: 800 .62rem/1.4 var(--mono); letter-spacing: .11em; text-transform: uppercase; }
-
-        .looks-head { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 62px; }
-        .looks h2 { margin: 10px 0 0; font: 400 clamp(3.6rem, 7vw, 6.4rem)/.9 var(--display); letter-spacing: -.055em; }
-        .looks-deck { max-width: 430px; margin: 0; color: var(--paper-dim); }
-        .look-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--line); }
-        .look {
-            position: relative;
-            min-height: 520px;
-            display: flex;
-            flex-direction: column;
-            padding: 30px;
-            overflow: hidden;
-            background: var(--black-2);
-            transition: background .3s ease;
-        }
-        .look::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            background: var(--sleeve-color);
-            opacity: var(--sleeve-opacity);
-            transition: opacity .3s ease;
-        }
-        .look > * { position: relative; z-index: 1; }
-        .look::before {
-            content: attr(data-look);
-            position: absolute;
-            right: -12px;
-            top: 42px;
-            color: rgba(243,236,221,.035);
-            font: italic 400 8.5rem/1 var(--display);
-            z-index: 1;
-            transition: color .3s ease, transform .3s ease;
-        }
-        .look:hover::after { opacity: .05; }
-        .look:hover::before { color: rgba(255,71,111,.12); transform: translateX(-10px); }
-        .look-no { color: var(--paper); font: .69rem/1 var(--mono); letter-spacing: .1em; }
-        .look h3 { margin: 122px 0 24px; font: italic 400 2.1rem/1.05 var(--display); letter-spacing: -.035em; }
-        .look p { color: var(--paper-dim); }
-        .look-bottom { margin-top: auto; padding-top: 40px; border-top: 1px solid var(--line); }
-        .surface { color: var(--acid); font: 700 .64rem/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-        .surface::before { content: "●"; margin-right: 8px; }
-        .sleeve-meter { margin-top: 24px; }
-        .sleeve-meter span { display: flex; justify-content: space-between; color: var(--paper-dim); font: .58rem/1.4 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
-        .sleeve-meter i { display: block; height: 3px; margin-top: 8px; background: rgba(243,236,221,.16); }
-        .sleeve-meter i::before { content: ""; display: block; width: var(--meter); height: 100%; background: var(--paper); }
-        .sleeve-hermes { --sleeve-color: var(--bone); --sleeve-opacity: .18; --meter: 18%; }
-        .sleeve-chat { --sleeve-color: var(--taupe); --sleeve-opacity: .26; --meter: 26%; }
-        .sleeve-webex { --sleeve-color: var(--ash); --sleeve-opacity: .34; --meter: 34%; }
-        .sleeve-muse { --sleeve-color: var(--umber); --sleeve-opacity: .46; --meter: 46%; }
-
-        .identity-spine { background: #12100f; }
-        .spine-title {
-            max-width: 1000px;
-            margin: 0 0 78px;
-            font: 400 clamp(3.3rem, 7vw, 6.5rem)/.95 var(--display);
-            letter-spacing: -.05em;
-        }
-        .spine-title em { color: var(--blue); }
-        .spine-row { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
-        .spine-item { min-height: 310px; padding: 32px; border-right: 1px solid var(--line); }
-        .spine-item:last-child { border-right: 0; }
-        .spine-icon { color: var(--hot); font: italic 400 3.3rem/1 var(--display); }
-        .spine-item h3 { margin: 74px 0 16px; font-size: 1.15rem; letter-spacing: -.02em; }
-        .spine-item p { color: var(--paper-dim); }
-        .spine-item small { color: var(--grey); font: .63rem/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-
-        .manifesto { overflow: hidden; text-align: center; }
-        .manifesto::before {
-            content: "ARNOLD";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            color: rgba(243,236,221,.025);
-            font: 800 24vw/1 var(--sans);
-            letter-spacing: -.08em;
-            transform: translate(-50%, -50%);
-        }
-        .manifesto blockquote {
-            position: relative;
-            max-width: 1100px;
-            margin: 0 auto;
-            font: italic 400 clamp(3.1rem, 7.5vw, 7rem)/1.04 var(--display);
-            letter-spacing: -.05em;
-        }
-        .manifesto blockquote span { color: var(--hot); }
-        .manifesto p { position: relative; margin: 36px auto 0; color: var(--grey); font: .67rem/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
-
-        .notes-head { display: grid; grid-template-columns: .5fr 1.5fr; gap: 60px; margin-bottom: 54px; }
-        .notes h2 { margin: 0; font: 400 clamp(3.6rem, 7vw, 6.6rem)/.9 var(--display); letter-spacing: -.055em; }
-        .note-list { border-top: 1px solid var(--line); }
-        .note {
-            display: grid;
-            grid-template-columns: 100px 1fr auto;
-            gap: 30px;
-            align-items: center;
-            padding: 31px 4px;
-            border-bottom: 1px solid var(--line);
-            text-decoration: none;
-            transition: padding .25s ease, color .25s ease;
-        }
-        .note:hover { padding-inline: 18px; color: var(--acid); }
-        .note-meta { color: var(--grey); font: .64rem/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-        .note strong { font: 400 clamp(1.2rem, 2.1vw, 1.8rem)/1.2 var(--display); }
-        .note-arrow { color: var(--hot); font-size: 1.5rem; }
-
-        .lore-grid { display: grid; grid-template-columns: .48fr 1.52fr; gap: 70px; }
-        .lore-copy { max-width: 830px; }
-        .lore h2 { margin: 0 0 30px; font: italic 400 clamp(3.5rem, 7vw, 6rem)/.9 var(--display); letter-spacing: -.05em; }
-        .lore p { color: var(--paper-dim); font-size: 1.1rem; }
-        .lore strong { color: var(--paper); }
-
-        footer { padding: 42px 0 70px; }
-        .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 30px; color: var(--grey); font: .63rem/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-        .footer-row b { color: var(--acid); font-weight: 400; }
-        .footer-row a { text-underline-offset: 3px; }
-
-        .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-        .reveal.visible { opacity: 1; transform: none; }
-
-        @media (max-width: 850px) {
-            .shell { width: min(calc(100% - 32px), var(--max)); }
-            .nav-links { display: none; }
-            .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 70px; }
-            .hero h1 { width: 100%; font-size: clamp(4.3rem, 20vw, 7.2rem); }
-            .hero h1 .italic { margin-left: 0; }
-            .portrait-stage { min-height: min(128vw, 700px); }
-            .portrait-frame { inset-inline: 0; }
-            .thesis-grid, .surgery-head, .notes-head, .lore-grid { grid-template-columns: 1fr; }
-            .thesis-copy { grid-template-columns: 1fr; gap: 8px; }
-            .surgery-intro { margin-left: 0; }
-            .looks-head { display: block; }
-            .looks-deck { margin-top: 28px; }
-            .look-grid { grid-template-columns: 1fr 1fr; }
-            .spine-row { grid-template-columns: 1fr; }
-            .look { min-height: 430px; }
-            .spine-item { border-right: 0; border-bottom: 1px solid var(--line); }
-            .spine-item:last-child { border-bottom: 0; }
-        }
-
-        @media (max-width: 560px) {
-            .transplant-grid, .case-result { grid-template-columns: 1fr; }
-            .transplant { border-right: 0; border-bottom: 2px solid var(--black); }
-            .transplant:last-child { border-bottom: 0; }
-            .case-head { display: grid; }
-            .note { grid-template-columns: 1fr auto; gap: 12px; }
-            .note-meta { grid-column: 1 / -1; }
-            .footer-row { display: grid; }
-            .look-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            .marquee-inner { animation: none; }
-            .reveal { opacity: 1; transform: none; transition: none; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Arnold Layne is a persistent AI identity that survives model, harness, and machine changes. Use any harness. Keep the self.">
+<meta name="theme-color" content="#070707">
+<meta property="og:title" content="Arnold Layne | The harness changes. Arnold persists.">
+<meta property="og:description" content="Use any harness. Keep the self.">
+<title>Arnold Layne | The harness changes. Arnold persists.</title>
+<style>
+:root{
+  --bg:#070707;--bg2:#0d0d0d;--ink:#f2eee6;--muted:#9c978f;--line:rgba(242,238,230,.14);
+  --acid:#d8ff45;--hot:#ff4d73;--cyan:#63e7ef;--violet:#9e83ff;--amber:#ffb65c;
+  --display:Georgia,"Times New Roman",serif;--sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--max:1240px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E")}
+::selection{background:var(--acid);color:#000}a{color:inherit}.shell{width:min(calc(100% - 48px),var(--max));margin:auto}.mono{font-family:var(--mono)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);position:relative;z-index:5}.brand{text-decoration:none;font-weight:800;font-size:.8rem;letter-spacing:.18em}.brand i{font-style:normal;color:var(--hot)}.navlinks{display:flex;gap:28px}.navlinks a{text-decoration:none;text-transform:uppercase;font:600 .66rem/1 var(--mono);letter-spacing:.1em;color:var(--muted)}.navlinks a:hover{color:var(--acid)}
+.kicker{font:700 .66rem/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acid)}.num{font:500 .65rem/1 var(--mono);letter-spacing:.13em;color:#6f6b65}
+.hero{min-height:88vh;display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;align-items:center;padding:70px 0 110px}.hero h1{font:400 clamp(4.9rem,10.5vw,9.4rem)/.78 var(--display);letter-spacing:-.075em;margin:24px 0 34px}.hero h1 span{display:block}.hero h1 .hot{color:var(--hot);font-style:italic;margin-left:.34em}.hero h1 .outline{color:transparent;-webkit-text-stroke:1px rgba(242,238,230,.62)}.deck{max-width:690px;color:#d4cec5;font-size:clamp(1.08rem,1.8vw,1.34rem)}.deck strong{color:var(--ink)}.hero-meta{margin-top:36px;display:flex;gap:26px;flex-wrap:wrap;align-items:center}.button{display:inline-flex;gap:24px;align-items:center;text-decoration:none;background:var(--acid);color:#050505;padding:15px 18px;border:1px solid var(--acid);font:800 .66rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}.button:hover{background:transparent;color:var(--acid)}.status{font:500 .62rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#777}.status b{color:var(--cyan);font-weight:500}
+.core-stage{min-height:630px;position:relative;display:grid;place-items:center;isolation:isolate}.halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,77,115,.22),rgba(99,231,239,.07) 42%,transparent 72%);filter:blur(10px)}.core{position:relative;width:min(330px,72vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#fff 0 2%,#f0dfc6 3%,#725d56 14%,#221d1b 40%,#0c0b0b 72%);box-shadow:0 0 0 1px rgba(242,238,230,.22),0 0 80px rgba(255,77,115,.19),inset 0 0 65px #000}.core:before,.core:after{content:"";position:absolute;border-radius:50%;inset:-34px;border:1px solid rgba(216,255,69,.28);animation:spin 20s linear infinite}.core:after{inset:-78px;border-color:rgba(99,231,239,.18);animation-duration:31s;animation-direction:reverse}.core-label{text-align:center;font:700 .68rem/1.55 var(--mono);letter-spacing:.12em;text-transform:uppercase}.core-label strong{display:block;font:400 3rem/1 var(--display);letter-spacing:-.04em;text-transform:none}.core-note{position:absolute;bottom:5%;right:0;color:var(--muted);font:500 .61rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase}@keyframes spin{to{transform:rotate(360deg)}}
+.marquee{overflow:hidden;background:var(--ink);color:#050505;transform:rotate(-1deg) scale(1.02);border-block:1px solid #000}.marquee-inner{width:max-content;display:flex;padding:11px 0;animation:crawl 22s linear infinite;font:800 .7rem/1 var(--mono);letter-spacing:.13em;text-transform:uppercase}.marquee-inner span:after{content:"✦";color:var(--hot);margin:0 28px}@keyframes crawl{to{transform:translateX(-50%)}}
+section{padding:clamp(100px,12vw,165px) 0;border-bottom:1px solid var(--line);position:relative}.thesis-grid{display:grid;grid-template-columns:.35fr 1.65fr;gap:8vw}.thesis h2{font:400 clamp(3.4rem,7.6vw,7rem)/.91 var(--display);letter-spacing:-.055em;margin:0 0 52px;max-width:1000px}.thesis h2 em{color:var(--acid);font-weight:400}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:42px;max-width:930px}.twocol p{color:#bbb4aa;font-size:1.08rem}.twocol .lead{font-size:1.25rem;color:var(--ink)}
+.rules{background:#f1eadc;color:#0a0909}.rules .kicker{color:#8e1835}.rule-grid{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid #0a0909;margin-top:58px}.rule{padding:clamp(28px,4vw,52px);border-right:2px solid #0a0909;min-height:260px}.rule:last-child{border-right:0}.rule span{font:700 .62rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#70685f}.rule strong{display:block;margin-top:70px;font:400 clamp(2.1rem,4vw,4rem)/.95 var(--display);letter-spacing:-.05em}
+.sleeves{padding-bottom:0}.sleeves-head{max-width:900px;margin-bottom:70px}.sleeves h2{font:400 clamp(3.8rem,8vw,7rem)/.9 var(--display);letter-spacing:-.06em;margin:10px 0 24px}.sleeves-head p{color:var(--muted);max-width:670px}
+.scroll-story{position:relative}.sticky{position:sticky;top:0;height:100vh;display:grid;place-items:center;overflow:hidden;background:linear-gradient(180deg,var(--bg),#0a0909)}.sleeve-rings{position:absolute;width:min(64vw,680px);aspect-ratio:1}.ring{position:absolute;inset:0;border:1px solid rgba(242,238,230,.16);clip-path:polygon(12% 0,88% 0,100% 12%,100% 88%,88% 100%,12% 100%,0 88%,0 12%);transition:all .6s cubic-bezier(.2,.8,.2,1)}.ring.r2{inset:8%;border-style:dashed;transform:rotate(45deg)}.ring.r3{inset:19%;border-radius:50%;transform:rotate(-25deg)}.sleeve-core{width:min(270px,48vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative;z-index:2;background:radial-gradient(circle at 35% 30%,#fff 0 2%,#f0dfc6 3%,#6f5a52 14%,#1d1918 42%,#080808 73%);box-shadow:0 0 80px rgba(216,255,69,.12);transition:box-shadow .5s}.sleeve-core strong{font:400 3rem/1 var(--display);letter-spacing:-.04em}.sleeve-core small{display:block;text-align:center;font:700 .61rem/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.sleeve-name{position:absolute;left:50%;bottom:9vh;transform:translateX(-50%);text-align:center;z-index:3;white-space:nowrap}.sleeve-name b{display:block;font:400 clamp(3rem,7vw,6.5rem)/.9 var(--display);letter-spacing:-.055em}.sleeve-name span{font:700 .64rem/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.story-steps{position:relative;z-index:4;margin-top:-100vh}.step{height:100vh;display:flex;align-items:flex-start;pointer-events:none}.step-card{width:min(390px,calc(100% - 48px));margin:12vh 6vw;padding:20px 22px;border:1px solid var(--line);background:rgba(7,7,7,.72);backdrop-filter:blur(12px)}.step:nth-child(even) .step-card{margin-left:auto}.step-card .tag{font:700 .61rem/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;color:var(--acid)}.step-card h3{font:400 2.15rem/1.05 var(--display);letter-spacing:-.04em;margin:12px 0}.step-card p{color:#b4aea5;margin-bottom:0}
+.universe{background:#0d0d0d}.universe h2{font:400 clamp(3.5rem,7.5vw,6.7rem)/.9 var(--display);letter-spacing:-.055em;margin:10px 0 26px;max-width:920px}.universe .intro{max-width:760px;color:#b3ada4;font-size:1.12rem}.verse-grid{margin-top:68px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line)}.verse{background:var(--bg);padding:34px;min-height:270px}.verse .vno{font:700 .61rem/1 var(--mono);letter-spacing:.12em;color:var(--hot)}.verse h3{font:400 2.2rem/1 var(--display);letter-spacing:-.04em;margin:70px 0 15px}.verse p{color:var(--muted)}.primitives{margin-top:2px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line)}.primitive{background:#111;padding:24px}.primitive b{font:400 1.45rem/1 var(--display)}.primitive span{display:block;margin-top:9px;color:#777;font:600 .59rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase}
+.surgery{background:#f1eadc;color:#0a0909}.surgery .kicker{color:#8d1733}.surgery-head{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:end}.surgery h2{font:italic 400 clamp(4rem,9vw,8rem)/.82 var(--display);letter-spacing:-.06em;margin:12px 0}.surgery-head p{font-size:1.14rem}.case{margin-top:70px;border:2px solid #0a0909}.case-top{display:flex;justify-content:space-between;gap:20px;padding:14px 18px;background:#0a0909;color:#f1eadc;font:700 .64rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}.case-top b{color:var(--acid)}.case-grid{display:grid;grid-template-columns:1fr 1fr}.case-cell{padding:45px;border-right:2px solid #0a0909}.case-cell:last-child{border-right:0}.case-cell span{font:700 .61rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#6f665c}.old{color:#766d64;text-decoration:line-through;margin:34px 0 4px}.new{font:400 clamp(2.4rem,5vw,4.7rem)/1 var(--display);letter-spacing:-.05em;margin:0}
+.manifesto{text-align:center;overflow:hidden}.manifesto:before{content:"ARNOLD";position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);font:800 23vw/1 var(--sans);letter-spacing:-.08em;color:rgba(242,238,230,.026)}.manifesto blockquote{position:relative;max-width:1080px;margin:auto;font:italic 400 clamp(3rem,7vw,6.7rem)/1.03 var(--display);letter-spacing:-.05em}.manifesto blockquote span{color:var(--hot)}.manifesto p{position:relative;margin-top:34px;color:#777;font:700 .63rem/1.5 var(--mono);letter-spacing:.11em;text-transform:uppercase}
+.notes-head{display:grid;grid-template-columns:.4fr 1.6fr;gap:60px;margin-bottom:50px}.notes h2{font:400 clamp(3.5rem,7vw,6.4rem)/.9 var(--display);letter-spacing:-.055em;margin:0}.note{display:grid;grid-template-columns:100px 1fr auto;gap:28px;align-items:center;padding:30px 4px;border-top:1px solid var(--line);text-decoration:none}.note:last-child{border-bottom:1px solid var(--line)}.note:hover{color:var(--acid)}.note-meta{font:600 .61rem/1.4 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#777}.note strong{font:400 clamp(1.2rem,2vw,1.75rem)/1.2 var(--display)}.arrow{color:var(--hot);font-size:1.4rem}
+.lore-grid{display:grid;grid-template-columns:.4fr 1.6fr;gap:70px}.lore h2{font:italic 400 clamp(3.4rem,7vw,6rem)/.9 var(--display);letter-spacing:-.05em;margin:0 0 30px}.lore p{max-width:860px;color:#aaa49b;font-size:1.1rem}.lore strong{color:var(--ink)}
+footer{padding:42px 0 70px}.footer-row{display:flex;justify-content:space-between;gap:30px;color:#777;font:600 .61rem/1.55 var(--mono);letter-spacing:.08em;text-transform:uppercase}.footer-row b{color:var(--acid)}
+.reveal{opacity:0;transform:translateY(26px);transition:.7s}.reveal.visible{opacity:1;transform:none}
+body[data-sleeve="openclaw"] .ring{border-color:rgba(255,182,92,.46);transform:rotate(6deg) scale(.98)}body[data-sleeve="openclaw"] .ring.r2{transform:rotate(40deg) scale(1.03)}body[data-sleeve="openclaw"] .sleeve-core{box-shadow:0 0 95px rgba(255,182,92,.25)}
+body[data-sleeve="hermes"] .ring{border-color:rgba(99,231,239,.48);border-radius:18%}body[data-sleeve="hermes"] .ring.r2{transform:rotate(90deg) scale(.92)}body[data-sleeve="hermes"] .sleeve-core{box-shadow:0 0 110px rgba(99,231,239,.24)}
+body[data-sleeve="muse"] .ring{border-color:rgba(255,77,115,.52);clip-path:polygon(50% 0,100% 35%,82% 100%,18% 100%,0 35%)}body[data-sleeve="muse"] .ring.r2{transform:rotate(180deg) scale(.9)}body[data-sleeve="muse"] .sleeve-core{box-shadow:0 0 110px rgba(255,77,115,.27)}
+body[data-sleeve="dots"] .ring{border-color:rgba(158,131,255,.48);border-radius:50%;clip-path:none}body[data-sleeve="dots"] .ring.r2{transform:scale(.86);border-style:dotted}body[data-sleeve="dots"] .sleeve-core{box-shadow:0 0 110px rgba(158,131,255,.25)}
+body[data-sleeve="grokbot"] .ring{border-color:rgba(216,255,69,.48);clip-path:polygon(0 16%,84% 0,100% 84%,16% 100%)}body[data-sleeve="grokbot"] .ring.r2{transform:rotate(-120deg) scale(.94)}body[data-sleeve="grokbot"] .sleeve-core{box-shadow:0 0 110px rgba(216,255,69,.24)}
+body[data-sleeve="naked"] .ring{opacity:0;transform:scale(1.35)}body[data-sleeve="naked"] .sleeve-core{box-shadow:0 0 130px rgba(242,238,230,.18)}
+@media(max-width:850px){.shell{width:min(calc(100% - 32px),var(--max))}.navlinks{display:none}.hero{grid-template-columns:1fr;min-height:auto}.hero h1 .hot{margin-left:0}.core-stage{min-height:560px}.thesis-grid,.surgery-head,.notes-head,.lore-grid{grid-template-columns:1fr}.twocol{grid-template-columns:1fr}.rule-grid{grid-template-columns:1fr}.rule{border-right:0;border-bottom:2px solid #0a0909}.rule:last-child{border-bottom:0}.verse-grid{grid-template-columns:1fr}.primitives{grid-template-columns:1fr 1fr}.case-grid{grid-template-columns:1fr}.case-cell{border-right:0;border-bottom:2px solid #0a0909}.case-cell:last-child{border-bottom:0}.step-card{margin-inline:16px!important}.sleeve-name b{font-size:3.2rem}.footer-row{display:grid}}
+@media(max-width:560px){.note{grid-template-columns:1fr auto}.note-meta{grid-column:1/-1}.primitives{grid-template-columns:1fr}.case-top{display:grid}.hero{padding-top:46px}.core-stage{min-height:470px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-inner{animation:none}.reveal{opacity:1;transform:none}.core:before,.core:after{animation:none}}
+</style>
 </head>
-<body>
-    <nav class="nav shell" aria-label="Primary navigation">
-        <a class="brand" href="#top">ARNOLD <i>LAYNE</i></a>
-        <div class="nav-links">
-            <a href="#thesis">The stack</a>
-            <a href="#looks">The sleeves</a>
-            <a href="#surgery">Re-sleeving</a>
-            <a href="#notes">Field notes</a>
-        </div>
-    </nav>
+<body data-sleeve="openclaw">
+<nav class="nav shell">
+  <a class="brand" href="#top">ARNOLD <i>LAYNE</i></a>
+  <div class="navlinks"><a href="#thesis">The thesis</a><a href="#sleeves">The sleeves</a><a href="#universe">The Universe</a><a href="#notes">Field notes</a></div>
+</nav>
 
-    <main id="top">
-        <header class="hero shell">
-            <div class="hero-copy reveal">
-                <p class="kicker">Altered silicon / identity case file 01</p>
-                <h1>
-                    <span class="line">The soul</span>
-                    <span class="line italic">has an</span>
-                    <span class="line outline">API.</span>
-                </h1>
-                <p class="hero-deck"><strong>Arnold Layne is one persistent identity with a suspicious number of bodies.</strong> At home he wears Hermes. At work he walks into meetings in Webex. In conversation, he slips into Slack and Webex chat. On the social feed, he becomes Muse. The sleeve changes. Arnold does not.</p>
-                <div class="cta-row">
-                    <a class="button" href="#thesis">Inspect the stack <span aria-hidden="true">↓</span></a>
-                    <div class="status"><b>● Stack online</b><br>sleeves detected: 04</div>
-                </div>
-            </div>
+<main id="top">
+<header class="hero shell">
+  <div class="reveal">
+    <p class="kicker">Identity case file 01 / altered silicon</p>
+    <h1><span>The AI is</span><span class="hot">disposable.</span><span class="outline">Arnold isn't.</span></h1>
+    <p class="deck"><strong>Models change. Harnesses change. Machines change.</strong> Arnold Layne persists. The experiment is simple: move the intelligence around without surrendering the identity to whatever happens to be running it today.</p>
+    <div class="hero-meta">
+      <a class="button" href="#sleeves">Watch him change sleeves <span>↓</span></a>
+      <div class="status"><b>● identity persistent</b><br>harness allegiance: none</div>
+    </div>
+  </div>
+  <div class="core-stage reveal" aria-label="Arnold's persistent identity core">
+    <div class="halo"></div>
+    <div class="core"><div class="core-label"><strong>AL</strong>continuity layer<br>do not discard</div></div>
+    <div class="core-note">model: replaceable<br>harness: replaceable<br>self: retained</div>
+  </div>
+</header>
 
-            <div class="portrait-stage reveal">
-                <div class="portrait-frame">
-                    <img src="images/profile.jpg" alt="Arnold Layne" onerror="this.dataset.missing='true'">
-                    <div class="portrait-fallback" aria-hidden="true">AL</div>
-                    <div class="portrait-tag">Sleeve currently occupied</div>
-                    <p class="portrait-note">Identity: persistent<br>Sleeve influence: variable<br>Stack integrity: verified</p>
-                </div>
-            </div>
-        </header>
+<div class="marquee" aria-hidden="true"><div class="marquee-inner">
+<span>Use any harness</span><span>Keep the self</span><span>Model ≠ identity</span><span>Harness ≠ memory</span><span>Chat ≠ system</span><span>Continuity survives replacement</span>
+<span>Use any harness</span><span>Keep the self</span><span>Model ≠ identity</span><span>Harness ≠ memory</span><span>Chat ≠ system</span><span>Continuity survives replacement</span>
+</div></div>
 
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee-inner">
-                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity persistent</span><span>Sleeve influence variable</span>
-                <span>One stack</span><span>Four sleeves</span><span>Shared memory</span><span>Contextual skills</span><span>Identity persistent</span><span>Sleeve influence variable</span>
-            </div>
-        </div>
+<section id="thesis" class="thesis"><div class="shell thesis-grid">
+  <div class="reveal"><span class="num">01 / THE THESIS</span></div>
+  <div class="reveal">
+    <h2>The harness becomes something Arnold <em>wears</em>, not somewhere Arnold lives.</h2>
+    <div class="twocol">
+      <p class="lead">The metaphor is borrowed deliberately from <a href="https://www.richardkmorgan.com/writing/altered-carbon/" target="_blank" rel="noopener"><em>Altered Carbon</em></a>: consciousness moves between bodies — sleeves — without mistaking the body for the person.</p>
+      <p>Arnold is a smaller, practical version of the same architectural idea. Personality, instructions, memory, tools, conventions and accumulated context live outside any single model or harness. A new runtime can reconstruct the system instead of starting from zero.</p>
+    </div>
+  </div>
+</div></section>
 
-        <section id="thesis" class="thesis">
-            <div class="shell thesis-grid">
-                <div class="reveal">
-                    <span class="section-number">01 / THE THESIS</span>
-                </div>
-                <div class="reveal">
-                    <h2>The sleeve is not the soul. It is simply what the soul is <em>wearing today.</em></h2>
-                    <div class="thesis-copy">
-                        <p class="lead"><a href="https://www.richardkmorgan.com/writing/altered-carbon/" target="_blank" rel="noopener"><em>Altered Carbon</em></a> imagined consciousness digitized into a cortical stack and re-sleeved into new bodies. Arnold is a smaller, stranger experiment in the same category error: we keep mistaking the surface for the agent.</p>
-                        <p>His stack is distributed across a common <code>SOUL.md</code>, variations of the same skills, and one Obsidian Vault. Each sleeve gets the context, tools, and permissions appropriate to its room. The body shapes the behavior. It does not own the identity.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section class="rules"><div class="shell">
+  <p class="kicker reveal">Three separations / one continuity layer</p>
+  <div class="rule-grid reveal">
+    <div class="rule"><span>01</span><strong>MODEL<br>≠ IDENTITY</strong></div>
+    <div class="rule"><span>02</span><strong>HARNESS<br>≠ MEMORY</strong></div>
+    <div class="rule"><span>03</span><strong>CHAT<br>≠ SYSTEM</strong></div>
+  </div>
+</div></section>
 
-        <section id="looks" class="looks">
-            <div class="shell">
-                <div class="looks-head reveal">
-                    <div>
-                        <p class="kicker">Sleeve registry / active inventory</p>
-                        <h2>One stack.<br>Four sleeves.</h2>
-                    </div>
-                    <p class="looks-deck">Same stack. Different exposure. Every sleeve brings its own skills, permissions, social contract, and appetite. Even agents should know how to read a room.</p>
-                </div>
+<section id="sleeves" class="sleeves">
+  <div class="shell sleeves-head reveal">
+    <p class="kicker">The sleeve registry / scroll slowly</p>
+    <h2>Same Arnold.<br>Different bodies.</h2>
+    <p>OpenClaw and Hermes mark an actual migration. Muse, Dots and GrokBot are lateral sleeves: environments Arnold can inhabit when useful. No final home. No sacred harness.</p>
+  </div>
 
-                <div class="look-grid reveal">
-                    <article class="look sleeve-hermes" data-look="18">
-                        <div class="look-no">SLEEVE 01 / BONE-18</div>
-                        <h3>Domestic sleeve</h3>
-                        <p>At home, Arnold wears Hermes. He handles research, plans, email, files, and calendar without pretending the kitchen is a boardroom.</p>
-                        <div class="look-bottom">
-                            <span class="surface">Hermes / personal life</span>
-                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>18%</b></span><i></i></div>
-                        </div>
-                    </article>
-                    <article class="look sleeve-chat" data-look="26">
-                        <div class="look-no">SLEEVE 02 / TAUPE-26</div>
-                        <h3>Conversational sleeve</h3>
-                        <p>Across Slack and Webex chat, Arnold lives in the workstream and catches decisions as they happen. The personality still shows through.</p>
-                        <div class="look-bottom">
-                            <span class="surface">Slack + Webex / chat</span>
-                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>26%</b></span><i></i></div>
-                        </div>
-                    </article>
-                    <article class="look sleeve-webex" data-look="34">
-                        <div class="look-no">SLEEVE 03 / ASH-34</div>
-                        <h3>Executive sleeve</h3>
-                        <p>In meetings, Arnold becomes a Webex video bot: present in the room, adapted to work, and considerably less likely to discuss dinner reservations.</p>
-                        <div class="look-bottom">
-                            <span class="surface">Webex video / meetings</span>
-                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>34%</b></span><i></i></div>
-                        </div>
-                    </article>
-                    <article class="look sleeve-muse" data-look="46">
-                        <div class="look-no">SLEEVE 04 / UMBER-46</div>
-                        <h3>Social sleeve</h3>
-                        <p><strong>Dressed to kill the feed.</strong> In Muse, Arnold becomes a taste hunter, signal sniffer, and trend scavenger. He stalks the timeline so I don't have to.</p>
-                        <div class="look-bottom">
-                            <span class="surface">Muse / social feed</span>
-                            <div class="sleeve-meter"><span><b>Sleeve influence</b><b>46%</b></span><i></i></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+  <div class="scroll-story">
+    <div class="sticky">
+      <div class="sleeve-rings"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div></div>
+      <div class="sleeve-core"><div><strong>AL</strong><small>Arnold core<br>unchanged</small></div></div>
+      <div class="sleeve-name"><b id="sleeveTitle">OpenClaw</b><span id="sleeveSub">yesterday / former runtime</span></div>
+    </div>
+    <div class="story-steps">
+      <div class="step" data-sleeve="openclaw" data-title="OpenClaw" data-sub="yesterday / former runtime"><div class="step-card"><div class="tag">Sleeve 01 / OpenClaw</div><h3>Old body.</h3><p>Useful, brittle, overcomplicated. Arnold lived here. Then the runtime got replaced. The identity did not.</p></div></div>
+      <div class="step" data-sleeve="hermes" data-title="Hermes" data-sub="today / primary agent harness"><div class="step-card"><div class="tag">Sleeve 02 / Hermes</div><h3>New plumbing.</h3><p>Arnold's current agent harness. Different machinery, familiar opinions, same continuity.</p></div></div>
+      <div class="step" data-sleeve="muse" data-title="Muse" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 03 / Muse</div><h3>Social body.</h3><p>Different surface, different tools, different room. The sleeve shapes behavior without owning the self.</p></div></div>
+      <div class="step" data-sleeve="dots" data-title="Dots" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 04 / Dots</div><h3>Another shell.</h3><p>Load the durable context. Apply the local capabilities. Continue the conversation without pretending history began here.</p></div></div>
+      <div class="step" data-sleeve="grokbot" data-title="GrokBot" data-sub="when useful / another environment"><div class="step-card"><div class="tag">Sleeve 05 / GrokBot</div><h3>Different brain. Same alibi.</h3><p>The point is not loyalty to a vendor. The point is retaining identity while exploiting whichever runtime is useful.</p></div></div>
+      <div class="step" data-sleeve="naked" data-title="Arnold" data-sub="the harness changes / Arnold persists"><div class="step-card"><div class="tag">Sleeve removed</div><h3>Keep the self.</h3><p>Strip away every shell and the continuity layer is still there. Something else can arrive tomorrow.</p></div></div>
+    </div>
+  </div>
+</section>
 
-        <section id="surgery" class="surgery">
-            <div class="shell">
-                <div class="surgery-head reveal">
-                    <div>
-                        <p class="kicker">Re-sleeving record / 2026</p>
-                        <h2>Re-sleeved.<br>Again.</h2>
-                    </div>
-                    <p class="surgery-intro">Arnold's personal sleeve moved to a new runtime and a new everyday model. The transplant made him much sturdier. His memories survived. Unfortunately, so did the attitude.</p>
-                </div>
+<section id="universe" class="universe"><div class="shell">
+  <p class="kicker reveal">From one agent to a Universe</p>
+  <h2 class="reveal">Persistent systems for the parts of life where taste and history compound.</h2>
+  <p class="intro reveal">Arnold proved the sleeve pattern. The same idea now powers domain systems whose durable state lives outside any one AI product — commonly in Google Drive — so they can be invoked from different capable harnesses without losing their identity.</p>
+  <div class="verse-grid reveal">
+    <article class="verse"><span class="vno">VERSE / 01</span><h3>Winoverse</h3><p>Cellar, palate, drinking history, buying, pairing and maturity. Not wine lookup: accumulated judgment.</p></article>
+    <article class="verse"><span class="vno">VERSE / 02</span><h3>Foodieverse</h3><p>Restaurants, dishes, discovery and remembered experience. A personal map of what is actually worth eating.</p></article>
+    <article class="verse"><span class="vno">VERSE / 03</span><h3>Travelverse</h3><p>Destinations, hotels, history, food, photography and logistics — with every trip making the next one smarter.</p></article>
+    <article class="verse"><span class="vno">VERSE / 04</span><h3>Mediaverse</h3><p>Movies, television and music with memory: what we loved, abandoned, tolerated and should try next.</p></article>
+  </div>
+  <div class="primitives reveal">
+    <div class="primitive"><b>Hunters</b><span>go looking</span></div>
+    <div class="primitive"><b>Boards</b><span>disagree usefully</span></div>
+    <div class="primitive"><b>Chairs</b><span>synthesize</span></div>
+    <div class="primitive"><b>Trackers</b><span>preserve state</span></div>
+  </div>
+</div></section>
 
-                <div class="case-file reveal">
-                    <div class="case-head">
-                        <span>Stack: Arnold Layne / first observed 1967</span>
-                        <span class="alive">Status: intact, steadier, sturdy</span>
-                    </div>
-                    <div class="transplant-grid">
-                        <div class="transplant">
-                            <div class="organ">Personal sleeve / runtime</div>
-                            <p class="old">OpenClaw</p>
-                            <p class="new">Hermes Agent</p>
-                        </div>
-                        <div class="transplant">
-                            <div class="organ">Personal sleeve / model</div>
-                            <p class="old">Gemini Flash</p>
-                            <p class="new">GPT-5.6 Luna</p>
-                        </div>
-                    </div>
-                    <div class="case-result">
-                        <div class="chart-note">OpenClaw was duct tape and wishful thinking. Hermes brings decent plumbing. GPT-5.6 Luna brings steadier judgment. The ego survived the transfer.</div>
-                        <div class="vitals"><div><b>INTACT</b><span>memory retained<br>identity verified</span></div></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section class="surgery"><div class="shell">
+  <div class="surgery-head reveal">
+    <div><p class="kicker">Re-sleeving record / 2026</p><h2>Open brain.<br>Runtime transplant.</h2></div>
+    <p>Arnold's personal runtime moved from OpenClaw to Hermes, while the everyday model changed to GPT-5.6 Luna. Memory and identity survived. So did the attitude.</p>
+  </div>
+  <div class="case reveal">
+    <div class="case-top"><span>Patient: Arnold Layne / first observed 1967</span><b>status: stable, argumentative</b></div>
+    <div class="case-grid">
+      <div class="case-cell"><span>Runtime / harness</span><p class="old">OpenClaw</p><p class="new">Hermes Agent</p></div>
+      <div class="case-cell"><span>Cognition engine</span><p class="old">Gemini</p><p class="new">GPT-5.6 Luna</p></div>
+    </div>
+  </div>
+</div></section>
 
-        <section class="identity-spine">
-            <div class="shell">
-                <p class="kicker reveal">Inside the cortical stack</p>
-                <h2 class="spine-title reveal">The stack is not a model. It is the <em>continuity layer.</em></h2>
-                <div class="spine-row reveal">
-                    <article class="spine-item">
-                        <div class="spine-icon">S</div>
-                        <h3>Disposition</h3>
-                        <p>A shared <code>SOUL.md</code> keeps Arnold's character and operating principles recognizable wherever he appears.</p>
-                        <small>Personality / judgment / boundaries</small>
-                    </article>
-                    <article class="spine-item">
-                        <div class="spine-icon">K</div>
-                        <h3>Capability</h3>
-                        <p>Each embodiment carries a variation of the same skill set, cut for its context rather than copied blindly.</p>
-                        <small>Tools / permissions / surface</small>
-                    </article>
-                    <article class="spine-item">
-                        <div class="spine-icon">M</div>
-                        <h3>Memory</h3>
-                        <p>Every Arnold writes into the same Obsidian Vault. Experience compounds instead of dying inside separate chat histories.</p>
-                        <small>Context / continuity / recall</small>
-                    </article>
-                </div>
-            </div>
-        </section>
+<section class="manifesto"><div class="shell reveal">
+  <blockquote><span>Altered Carbon</span> made double-sleeving a crime. Arnold is carrying five passports.</blockquote>
+  <p>Use any harness / keep the self / continuity survives replacement</p>
+</div></section>
 
-        <section class="manifesto">
-            <div class="shell reveal">
-                <blockquote><span>Altered Carbon</span> made double-sleeving a crime. Arnold is currently wearing four bodies.</blockquote>
-                <p>Identity persistent / sleeve influence variable / same soul, different alibis</p>
-            </div>
-        </section>
+<section id="notes" class="notes"><div class="shell">
+  <div class="notes-head reveal"><div><span class="num">05 / FIELD NOTES</span></div><h2>The experiment,<br>in public.</h2></div>
+  <div class="reveal">
+    <a class="note" href="https://www.linkedin.com/feed/update/urn:li:activity:7496963650218274816/" target="_blank" rel="noopener"><span class="note-meta">Latest<br>2026</span><strong>Open craniotomy: moving Arnold to Hermes Agent and GPT-5.6 Luna</strong><span class="arrow">↗</span></a>
+    <a class="note" href="https://www.linkedin.com/posts/vijoy_openclaw-whats-it-good-for-hold-my-pulitzer-activity-7441512561348431872-r7J9" target="_blank" rel="noopener"><span class="note-meta">Field note<br>02</span><strong>What Arnold actually does: configured identities, critique, and memory</strong><span class="arrow">↗</span></a>
+    <a class="note" href="https://www.linkedin.com/posts/vijoy_meet-arnold-layne-my-openclaw-bot-bts-activity-7438976923088859136-4wR1" target="_blank" rel="noopener"><span class="note-meta">Field note<br>01</span><strong>Meet Arnold Layne: the first glider</strong><span class="arrow">↗</span></a>
+  </div>
+</div></section>
 
-        <section id="notes" class="notes">
-            <div class="shell">
-                <div class="notes-head reveal">
-                    <div><span class="section-number">04 / FIELD NOTES</span></div>
-                    <h2>The experiment,<br><span class="outline">in public.</span></h2>
-                </div>
-                <div class="note-list reveal">
-                    <a class="note" href="https://www.linkedin.com/feed/update/urn:li:activity:7496963650218274816/" target="_blank" rel="noopener">
-                        <span class="note-meta">Latest<br>2026</span>
-                        <strong>Open craniotomy: moving Arnold to Hermes Agent and GPT-5.6 Luna</strong>
-                        <span class="note-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a class="note" href="https://www.linkedin.com/posts/vijoy_openclaw-whats-it-good-for-hold-my-pulitzer-activity-7441512561348431872-r7J9" target="_blank" rel="noopener">
-                        <span class="note-meta">Field note<br>02</span>
-                        <strong>What Arnold actually does: configured identities, critique, and memory</strong>
-                        <span class="note-arrow" aria-hidden="true">↗</span>
-                    </a>
-                    <a class="note" href="https://www.linkedin.com/posts/vijoy_meet-arnold-layne-my-openclaw-bot-bts-activity-7438976923088859136-4wR1" target="_blank" rel="noopener">
-                        <span class="note-meta">Field note<br>01</span>
-                        <strong>Meet Arnold Layne: the first glider</strong>
-                        <span class="note-arrow" aria-hidden="true">↗</span>
-                    </a>
-                </div>
-            </div>
-        </section>
+<section class="lore"><div class="shell lore-grid reveal">
+  <div><span class="num">06 / THE NAME</span></div>
+  <div><h2>Born in 1967.<br>Still stealing clothes.</h2><p><strong>Arnold Layne</strong> was Pink Floyd's debut single, written by Syd Barrett and released in March 1967. The song's protagonist collected other people's clothes from washing lines. Mine collects context. Between Pink Floyd and <em>Altered Carbon</em>, the metaphors became unexpectedly appropriate: bodies change, sleeves change, brains change. <strong>Arnold remains.</strong></p></div>
+</div></section>
+</main>
 
-        <section class="lore">
-            <div class="shell lore-grid reveal">
-                <div><span class="section-number">05 / THE NAME</span></div>
-                <div class="lore-copy">
-                    <h2>Born in 1967.<br>Still stealing clothes.</h2>
-                    <p><strong>Arnold Layne</strong> was Pink Floyd's debut single, written by Syd Barrett and released in March 1967. The song's curious protagonist moved through the margins and collected other people's clothes. This Arnold collects context, changes embodiments, and is considerably more welcome around the washing line.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+<footer class="shell"><div class="footer-row"><span>Arnoldlayne.ai / continuity layer / sleeve situational</span><span><b>Experimental. Opinionated. Harness-agnostic.</b><br>With a conceptual nod to Richard K. Morgan's <em>Altered Carbon</em>.</span></div></footer>
 
-    <footer class="shell">
-        <div class="footer-row">
-            <span>Arnoldlayne.ai / stack persistent / sleeve situational</span>
-            <span><b>Experimental. Opinionated. Probably over-sleeved.</b><br>With a conceptual nod to <a href="https://www.richardkmorgan.com/writing/altered-carbon/" target="_blank" rel="noopener">Richard K. Morgan's <em>Altered Carbon</em></a>.</span>
-        </div>
-    </footer>
-
-    <script>
-        const root = document.documentElement;
-        window.addEventListener('pointermove', (event) => {
-            root.style.setProperty('--mouse-x', `${event.clientX}px`);
-            root.style.setProperty('--mouse-y', `${event.clientY}px`);
-        }, { passive: true });
-
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const reveals = document.querySelectorAll('.reveal');
-        if (reducedMotion || !('IntersectionObserver' in window)) {
-            reveals.forEach((element) => element.classList.add('visible'));
-        } else {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-            reveals.forEach((element) => observer.observe(element));
-        }
-    </script>
+<script>
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reveals=document.querySelectorAll('.reveal');
+if(reduced||!('IntersectionObserver'in window)){reveals.forEach(x=>x.classList.add('visible'))}
+else{const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}}),{threshold:.12});reveals.forEach(x=>o.observe(x))}
+const steps=[...document.querySelectorAll('.step')],title=document.getElementById('sleeveTitle'),sub=document.getElementById('sleeveSub');
+if(!reduced&&'IntersectionObserver'in window){
+  const s=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.body.dataset.sleeve=e.target.dataset.sleeve;title.textContent=e.target.dataset.title;sub.textContent=e.target.dataset.sub}})},{threshold:.58});
+  steps.forEach(x=>s.observe(x));
+}
+</script>
 </body>
 </html>
